@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { ShieldCheck, MapPin, MessageSquare, Phone } from 'lucide-react';
+import FallbackImage from '@/components/FallbackImage';
 
 export default function Cardnegocio({ negocio }: any) {
   return (
@@ -10,7 +11,7 @@ export default function Cardnegocio({ negocio }: any) {
     >
       {/* Header Image */}
       <div className="h-48 border-b-4 border-on-background relative overflow-hidden bg-surface-container">
-        <img 
+        <FallbackImage 
           src={negocio.imagen} 
           alt={negocio.nombre} 
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

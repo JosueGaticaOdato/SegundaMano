@@ -3,6 +3,7 @@ import { getCategorias } from "@/services/categorias";
 import { getRubroBySlug } from "@/services/rubros";
 import { ArrowLeft } from "lucide-react";
 import { redirect } from "next/navigation";
+import FallbackImage from "@/components/FallbackImage";
 
 export default async function Rubro({ params }: { params: { slug: string } }) {
     const { slug } = await params;
@@ -58,7 +59,7 @@ export default async function Rubro({ params }: { params: { slug: string } }) {
                                 }`}
                         >
                             <figure className="w-full aspect-square border-b-4 border-on-background overflow-hidden relative bg-surface-variant">
-                                <img
+                                <FallbackImage
                                     alt={categoria.nombre}
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                     src={categoria.imagenFondo}

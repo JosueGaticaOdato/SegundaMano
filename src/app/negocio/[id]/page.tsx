@@ -2,6 +2,7 @@ import { getNegocio } from "@/services/negocios";
 import { CheckCircle2, ExternalLink, Globe, Mail, MapPin, MessageSquare, Phone, ShieldCheck, ThumbsUp } from "lucide-react";
 import Link from "next/link";
 import BackButton from "@/components/BackButton";
+import FallbackImage from "@/components/FallbackImage";
 
 export default async function Negocio({ params }: { params: { id: string } }) {
     const { id } = await params;
@@ -23,7 +24,11 @@ export default async function Negocio({ params }: { params: { id: string } }) {
 
     // Mensaje de whatsapp
     const text = encodeURIComponent(`Hola ${negocio.nombre}, vi tu comercio verificado en la guía comercial de Chivilcoy CLASIFK2 y me gustaría realizar una consulta.`);
-    const waUrl = negocio.whatsapp ? `https://wa.me/${negocio.whatsapp.replace('+', '').replace(/\s+/g, '')}?text=${text}` : "";
+    
+    // Limpiamos el número de teléfono para dejar solo dígitos, quitamos el 0 inicial si existe
+    const cleanPhone = negocio.telefono ? negocio.telefono.replace(/[^\d]/g, '').replace(/^0+/, '') : "";
+    // Aseguramos que empiece con el código de país 54 (Argentina) si no está presente
+    const waUrl = cleanPhone ? `https://wa.me/${cleanPhone.startsWith('54') ? cleanPhone : '54' + cleanPhone}?text=${text}` : "";
 
     return (
         <div className="w-full max-w-[1440px] mx-auto px-4 md:px-16 py-12 flex flex-col gap-8 bg-cuaternary">
@@ -42,7 +47,7 @@ export default async function Negocio({ params }: { params: { id: string } }) {
                     {/* Hero Image Card */}
                     <div className="bg-white border-4 border-on-background rounded-xl overflow-hidden brutal-shadow">
                         <div className="h-64 md:h-[450px] w-full relative border-b-4 border-on-background bg-slate-100">
-                            <img
+                            <FallbackImage
                                 src={negocio.imagen}
                                 alt={negocio.nombre}
                                 className="w-full h-full object-cover"
@@ -168,16 +173,17 @@ export default async function Negocio({ params }: { params: { id: string } }) {
                                     </div>
                                 )}
 
-                                {/* Major CTA: Contact by Whatsapp */}
-                                <a
-                                    href={waUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-full bg-whatsapp text-white border-4 border-on-background rounded-xl p-4 flex items-center justify-center gap-3 font-headline text-sm md:text-base font-black brutalist-shadow-sm hover:scale-105 active:translate-y-1 active:shadow-none transition-all mt-4 cursor-pointer text-center"
-                                >
-                                    <MessageSquare className="w-6 h-6 fill-current" />
-                                    CONTACTAR POR WHATSAPP
-                                </a>
+                                {waUrl && (
+                                    <a
+                                        href={waUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full bg-whatsapp text-white border-4 border-on-background rounded-xl p-4 flex items-center justify-center gap-3 font-headline text-sm md:text-base font-black brutalist-shadow-sm hover:scale-105 active:translate-y-1 active:shadow-none transition-all mt-4 cursor-pointer text-center"
+                                    >
+                                        <MessageSquare className="w-6 h-6 fill-current" />
+                                        CONTACTAR POR WHATSAPP
+                                    </a>
+                                )}
                             </>
                         )}
                     </div>

@@ -561,7 +561,7 @@ export default function DashboardContainer() {
                             alt={item.nombre}
                             className="w-12 h-12 object-cover border-2 border-on-background shadow-[2px_2px_0px_rgba(0,0,0,1)] bg-slate-100"
                             onError={(e) => {
-                              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200';
+                              (e.target as HTMLImageElement).src = '/notfound.jpeg';
                             }}
                           />
                         ) : (
@@ -632,7 +632,7 @@ export default function DashboardContainer() {
                             alt={item.nombre}
                             className="w-12 h-12 object-cover border-2 border-on-background shadow-[2px_2px_0px_rgba(0,0,0,1)] bg-slate-100"
                             onError={(e) => {
-                              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200';
+                              (e.target as HTMLImageElement).src = '/notfound.jpeg';
                             }}
                           />
                         ) : (
@@ -707,7 +707,7 @@ export default function DashboardContainer() {
                             alt={item.nombre}
                             className="w-10 h-10 object-cover border-2 border-on-background shadow-[2px_2px_0px_rgba(0,0,0,1)] bg-slate-100"
                             onError={(e) => {
-                              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200';
+                              (e.target as HTMLImageElement).src = '/notfound.jpeg';
                             }}
                           />
                         ) : (
@@ -867,7 +867,7 @@ export default function DashboardContainer() {
                           alt="preview"
                           className="w-full h-full object-cover"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200';
+                            (e.target as HTMLImageElement).src = '/notfound.jpeg';
                           }}
                         />
                       </div>
@@ -934,7 +934,7 @@ export default function DashboardContainer() {
                           alt="preview"
                           className="w-full h-full object-cover"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200';
+                            (e.target as HTMLImageElement).src = '/notfound.jpeg';
                           }}
                         />
                       </div>
@@ -1127,7 +1127,7 @@ export default function DashboardContainer() {
                           alt="preview"
                           className="w-full h-full object-cover"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200';
+                            (e.target as HTMLImageElement).src = '/notfound.jpeg';
                           }}
                         />
                       </div>
