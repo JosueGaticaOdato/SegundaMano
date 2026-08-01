@@ -31,7 +31,7 @@ export default async function Negocio({ params }: { params: { id: string } }) {
     const waUrl = cleanPhone ? `https://wa.me/${cleanPhone.startsWith('54') ? cleanPhone : '54' + cleanPhone}?text=${text}` : "";
 
     return (
-        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-16 py-12 flex flex-col gap-8 bg-cuaternary">
+        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-16 py-12 flex flex-col gap-8">
 
             {/* Navigation & Header Actions Row */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">

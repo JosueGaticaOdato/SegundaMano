@@ -2,6 +2,7 @@ import { getRubros } from '@/services/rubros';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Search from '@/components/Search';
+import FallbackImage from '@/components/FallbackImage';
 
 export default async function Home({ searchParams }: { searchParams?: Promise<{ page?: string }> }) {
 
@@ -77,11 +78,11 @@ export default async function Home({ searchParams }: { searchParams?: Promise<{ 
             >
               {/* Header */}
               <header className="h-44 w-full relative border-b-4 border-on-background overflow-hidden">
-                {/* <img
-                  src={rubro?.imagenFondo || ""}
-                  alt={rubro?.nombre}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                /> */}
+                <FallbackImage
+                    alt={rubro.nombre}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    src={rubro.imagenFondo}
+                />
                 <div className="absolute inset-0 bg-primary/50 group-hover:opacity-30 transition-opacity"></div>
 
                 {/* Cantidad de anuncios */}

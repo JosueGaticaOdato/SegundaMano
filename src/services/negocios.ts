@@ -6,7 +6,7 @@ export async function getNegocios(categoriaID: string) {
 
     const { data, error } = await supabase
         .from('negocios')
-        .select('id, nombre, descripcion, direccion, telefono')
+        .select('id, nombre, descripcion, direccion, telefono, verificado, imagen')
         .eq('categoria_id', categoriaID)
         .order('nombre', { ascending: true }); // Los ordenamos alfabéticamente
 
@@ -23,7 +23,7 @@ export async function getNegocios(categoriaID: string) {
 export async function getNegociosByRubro(rubroID: string) {
     const { data, error } = await supabase
         .from('negocios')
-        .select('id, nombre, descripcion, direccion, telefono, rubro_id, categoria_id')
+        .select('id, nombre, descripcion, direccion, telefono, rubro_id, categoria_id, imagen')
         .eq('rubro_id', rubroID)
         .order('nombre', { ascending: true }); // Los ordenamos alfabéticamente
 
@@ -69,7 +69,7 @@ export async function searchNegocios(queryText: string) {
     // 3. Buscamos negocios por su nombre, descripción, o que pertenezcan a las categorías o rubros encontrados
     let queryBuilder = supabase
         .from('negocios')
-        .select('id, nombre, descripcion, direccion, telefono, rubro_id, categoria_id')
+        .select('id, nombre, descripcion, direccion, telefono, verificado, rubro_id, categoria_id, imagen')
         .order('nombre', { ascending: true });
 
     // Armamos la condición OR

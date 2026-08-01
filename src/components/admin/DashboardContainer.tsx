@@ -16,6 +16,7 @@ import {
   Eye,
   Check,
 } from 'lucide-react';
+import { ImageUploader } from './ImageUploader';
 
 // Type definitions
 interface Rubro {
@@ -940,25 +941,12 @@ export default function DashboardContainer() {
                     />
                   </div>
 
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-label text-xs uppercase font-bold text-on-background">URL Imagen Fondo</label>
-                    <input
-                      type="url"
-                      placeholder="https://images.unsplash.com/..."
-                      value={rubroForm.imagenFondo}
-                      onChange={(e) => setRubroForm({ ...rubroForm, imagenFondo: e.target.value })}
-                      className="bg-slate-50 border-2 border-on-background p-3 font-sans font-medium focus:bg-white focus:outline-none"
-                    />
-                    {rubroForm.imagenFondo && (
-                      <div className="mt-2 border-2 border-on-background p-1 w-32 aspect-video bg-slate-50 relative overflow-hidden shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-                        <img
-                          src={rubroForm.imagenFondo}
-                          alt="preview"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    )}
-                  </div>
+                  <ImageUploader
+                    label="Imagen de Fondo"
+                    value={rubroForm.imagenFondo}
+                    onChange={(url) => setRubroForm({ ...rubroForm, imagenFondo: url })}
+                    bucket="rubros"
+                  />
                 </div>
               )}
 
@@ -1004,25 +992,12 @@ export default function DashboardContainer() {
                     </select>
                   </div>
 
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-label text-xs uppercase font-bold text-on-background">URL Imagen Fondo</label>
-                    <input
-                      type="url"
-                      placeholder="https://images.unsplash.com/..."
-                      value={categoriaForm.imagenFondo}
-                      onChange={(e) => setCategoriaForm({ ...categoriaForm, imagenFondo: e.target.value })}
-                      className="bg-slate-50 border-2 border-on-background p-3 font-sans font-medium focus:bg-white focus:outline-none"
-                    />
-                    {categoriaForm.imagenFondo && (
-                      <div className="mt-2 border-2 border-on-background p-1 w-32 aspect-video bg-slate-50 relative overflow-hidden shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-                        <img
-                          src={categoriaForm.imagenFondo}
-                          alt="preview"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    )}
-                  </div>
+                  <ImageUploader
+                    label="Imagen de Fondo"
+                    value={categoriaForm.imagenFondo}
+                    onChange={(url) => setCategoriaForm({ ...categoriaForm, imagenFondo: url })}
+                    bucket="categorias"
+                  />
                 </div>
               )}
 
@@ -1194,25 +1169,12 @@ export default function DashboardContainer() {
                   </div>
 
                   {/* Imagen & Verificado */}
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-label text-xs uppercase font-bold text-on-background">URL Imagen del Comercio</label>
-                    <input
-                      type="url"
-                      placeholder="https://images.unsplash.com/..."
-                      value={negocioForm.imagen}
-                      onChange={(e) => setNegocioForm({ ...negocioForm, imagen: e.target.value })}
-                      className="bg-slate-50 border-2 border-on-background p-3 font-sans font-medium focus:bg-white focus:outline-none"
-                    />
-                    {negocioForm.imagen && (
-                      <div className="mt-2 border-2 border-on-background p-1 w-32 aspect-video bg-slate-50 relative overflow-hidden shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-                        <img
-                          src={negocioForm.imagen}
-                          alt="preview"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    )}
-                  </div>
+                  <ImageUploader
+                    label="Imagen del Comercio"
+                    value={negocioForm.imagen}
+                    onChange={(url) => setNegocioForm({ ...negocioForm, imagen: url })}
+                    bucket="negocios"
+                  />
 
                   <div className="flex items-center gap-3 bg-slate-50 border-2 border-on-background p-4 shadow-[2px_2px_0px_rgba(0,0,0,1)] mt-2">
                     <input
