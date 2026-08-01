@@ -36,6 +36,9 @@ export default function Footer() {
       
       <div className="flex justify-center max-w-[1440px] mx-auto border-t-2 border-on-background/20 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-label opacity-70">
         <p className='font-bold'>© 2026 CLASIFK2 Chivilcoy. Todos los derechos reservados.</p>
+        <Link href="/admin" className="hover:text-secondary-fixed font-bold hover:underline transition-colors uppercase">
+            Acceso Panel
+        </Link>
       </div>
     </footer>
   );

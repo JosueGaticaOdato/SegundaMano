@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 
 interface PageProps {
     params: Promise<{ slug?: string[] }>;
-    searchParams?: Promise<{ search?: string }>;
+    searchParams?: Promise<{ search?: string; page?: string }>;
 }
 
 export default async function Categoria({ params, searchParams }: PageProps) {
@@ -40,8 +40,8 @@ export default async function Categoria({ params, searchParams }: PageProps) {
             title = categoria.nombre;
 
             // Obtenemos el rubro para volver atrás a las categorías de ese rubro
-            if (categoria.rubro_id) {
-                const rubro = await getRubro(categoria.rubro_id);
+            if (categoria.rubroId) {
+                const rubro = await getRubro(categoria.rubroId);
                 if (rubro) {
                     backLink = `/rubro/${rubro.slug}`;
                     backLinkLabel = `Volver a ${rubro.nombre}`;
