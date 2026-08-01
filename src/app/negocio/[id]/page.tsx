@@ -1,5 +1,5 @@
 import { getNegocio } from "@/services/negocios";
-import { CheckCircle2, ExternalLink, Globe, Mail, MapPin, MessageSquare, Phone, ShieldCheck } from "lucide-react";
+import { CheckCircle2, ExternalLink, Globe, Mail, MapPin, MessageSquare, Phone, ShieldCheck, ThumbsUp } from "lucide-react";
 import Link from "next/link";
 import BackButton from "@/components/BackButton";
 
@@ -133,6 +133,21 @@ export default async function Negocio({ params }: { params: { id: string } }) {
                                             <p className="font-label text-xs text-on-surface-variant uppercase font-bold mb-1">Correo Electrónico</p>
                                             <a href={`mailto:${negocio.email}`} className="font-sans text-sm md:text-base font-bold text-on-background hover:underline break-all">
                                                 {negocio.email}
+                                            </a>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Instagram (Optional) */}
+                                {negocio.instagram && (
+                                    <div className="flex items-start gap-4">
+                                        <div className="bg-orange-300 p-3 rounded-full border-2 border-on-background text-on-primary mt-1 flex-shrink-0 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+                                            <ThumbsUp className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <p className="font-label text-xs text-on-surface-variant uppercase font-bold mb-1">Instagram</p>
+                                            <a href={`https://instagram.com/${negocio.instagram}`} className="font-sans text-base md:text-lg font-bold text-on-background hover:underline">
+                                                {negocio.instagram} 
                                             </a>
                                         </div>
                                     </div>

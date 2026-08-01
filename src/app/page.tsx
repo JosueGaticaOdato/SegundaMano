@@ -1,10 +1,25 @@
 import { getRubros } from '@/services/rubros';
-import { ArrowRight, Grid, Search } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Search from '@/components/Search';
 
-export default async function Home() {
+export default async function Home({ searchParams }: { searchParams?: Promise<{ page?: string }> }) {
 
   const rubros = await getRubros();
+  const resolvedSearchParams = await searchParams;
+  const currentPage = resolvedSearchParams?.page ? parseInt(resolvedSearchParams.page) : 1;
+
+  const itemsPerPage = 6;
+  const totalItems = rubros?.length || 0;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const activePage = Math.max(1, Math.min(currentPage, totalPages || 1));
+  const paginatedRubros = rubros
+    ? rubros.slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage)
+    : [];
+
+  const getPageHref = (pageNumber: number) => {
+    return `/?page=${pageNumber}`;
+  };
 
   return (
     <div className='w-full'>
@@ -31,35 +46,15 @@ export default async function Home() {
           </p>
 
           {/* Buscador */}
-          <form
-            // onSubmit={handleSearchSubmit}
-            className="w-full max-w-3xl flex flex-col md:flex-row gap-4 bg-white p-4 brutal-border brutal-shadow"
-          >
-            <div className="flex-grow flex relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-outline w-6 h-6" />
-              <input
-                type="text"
-                placeholder="¿Qué estás buscando? (ej. Mecánico, Acopio, Pizza...)"
-                // value={query}
-                // onChange={(e) => setQuery(e.target.value)}
-                className="w-full bg-surface-container-lowest brutal-border-sm py-4 pl-12 pr-4 font-sans text-base md:text-lg text-on-background focus:outline-none focus:border-primary focus:ring-0 placeholder:font-label placeholder:text-outline"
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-secondary-fixed text-on-background brutal-border-sm py-4 px-8 font-headline text-lg uppercase font-bold hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-y-0 active:shadow-none flex items-center justify-center gap-2 cursor-pointer"
-            >
-              Buscar <ArrowRight className="w-5 h-5" />
-            </button>
-          </form>
+          <Search />
         </div>
       </header>
 
       {/* Busqueda de directorios */}
-      <section className="max-w-[1440px] mx-auto px-4 md:px-16 py-16 bg-surface-container-low body-dot-bg">
+      <section className="max-w-[1440px] mx-auto px-4 md:px-16 py-16 bg-surface-container-low body-dot-bg flex flex-col gap-12">
 
         {/* Titulo: Explorar directorio */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b-4 border-on-background pb-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b-4 border-on-background pb-6">
           <div>
             <h2 className="font-headline text-3xl md:text-5xl uppercase text-on-background font-black tracking-tight">
               Explorar Directorio
@@ -74,7 +69,7 @@ export default async function Home() {
         {/* Rubros */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-          {rubros?.map((rubro) => (
+          {paginatedRubros?.map((rubro) => (
             <Link
               key={rubro.id}
               href={`/rubro/${rubro.slug}`}
@@ -112,6 +107,59 @@ export default async function Home() {
 
         </div>
 
+        {/* Paginación simple adaptada a la estética brutalista */}
+        {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-3 mt-4">
+                {/* Flecha anterior */}
+                {activePage > 1 ? (
+                    <Link
+                        href={getPageHref(activePage - 1)}
+                        className="bg-white text-on-background border-4 border-on-background shadow-[4px_4px_0px_rgba(0,0,0,1)] w-12 h-12 flex items-center justify-center font-headline text-lg font-black hover:scale-105 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
+                    >
+                        &lt;
+                    </Link>
+                ) : (
+                    <span className="bg-slate-100 text-slate-400 border-4 border-slate-300 w-12 h-12 flex items-center justify-center font-headline text-lg font-black opacity-50 cursor-not-allowed">
+                        &lt;
+                    </span>
+                )}
+
+                {/* Números de página */}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
+                    const isActive = pageNum === activePage;
+                    return isActive ? (
+                        <span
+                            key={pageNum}
+                            className="bg-secondary-fixed text-on-background border-4 border-on-background shadow-[4px_4px_0px_rgba(0,0,0,1)] w-12 h-12 flex items-center justify-center font-headline text-lg font-black cursor-default"
+                        >
+                            {pageNum}
+                        </span>
+                    ) : (
+                        <Link
+                            key={pageNum}
+                            href={getPageHref(pageNum)}
+                            className="bg-white text-on-background border-4 border-on-background shadow-[4px_4px_0px_rgba(0,0,0,1)] w-12 h-12 flex items-center justify-center font-headline text-lg font-black hover:scale-105 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
+                        >
+                            {pageNum}
+                        </Link>
+                    );
+                })}
+
+                {/* Flecha siguiente */}
+                {activePage < totalPages ? (
+                    <Link
+                        href={getPageHref(activePage + 1)}
+                        className="bg-white text-on-background border-4 border-on-background shadow-[4px_4px_0px_rgba(0,0,0,1)] w-12 h-12 flex items-center justify-center font-headline text-lg font-black hover:scale-105 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
+                    >
+                        &gt;
+                    </Link>
+                ) : (
+                    <span className="bg-slate-100 text-slate-400 border-4 border-slate-300 w-12 h-12 flex items-center justify-center font-headline text-lg font-black opacity-50 cursor-not-allowed">
+                        &gt;
+                    </span>
+                )}
+            </div>
+        )}
 
       </section>
     </div>

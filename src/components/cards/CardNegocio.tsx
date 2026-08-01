@@ -44,10 +44,10 @@ export default function Cardnegocio({ negocio }: any) {
             <MapPin className="w-4 h-4 text-primary" />
             <span className="line-clamp-1">{negocio.direccion}</span>
           </div>
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <Phone className="w-4 h-4 text-whatsapp shrink-0" />
             <span className="line-clamp-1">{negocio.telefono}</span>
-          </div>
+          </div> */}
         </div>
 
         {/* CTA Action Buttons */}
