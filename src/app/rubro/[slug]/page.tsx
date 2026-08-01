@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getCategorias } from "@/services/categorias";
 import { getRubroBySlug } from "@/services/rubros";
 import { ArrowLeft } from "lucide-react";
+import { redirect } from "next/navigation";
 
 export default async function Rubro({ params }: { params: { slug: string } }) {
     const { slug } = await params;
@@ -25,16 +26,8 @@ export default async function Rubro({ params }: { params: { slug: string } }) {
     // 2. Obtener categoria usando el id del rubro obtenido
     const categorias = await getCategorias(rubro.id);
 
-    if (!categorias) {
-        return (
-            <main className="max-w-[1440px] mx-auto px-4 md:px-16 py-24 text-center">
-                <h1 className="font-headline text-3xl font-black uppercase text-on-background mb-4">Rubro no encontrado</h1>
-                <p className="font-sans font-medium text-on-surface-variant mb-6">El sector comercial solicitado no existe en nuestros registros actuales.</p>
-                <Link href="/" className="inline-block bg-primary text-white font-label text-sm font-bold border-2 border-on-background px-6 py-3 shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-0.5 active:translate-y-1">
-                    Volver al Inicio
-                </Link>
-            </main>
-        );
+    if (!categorias || categorias.length === 0) {
+        redirect(`/categoria/${slug}`);
     }
 
     return (
@@ -77,9 +70,9 @@ export default async function Rubro({ params }: { params: { slug: string } }) {
                                 <h2 className="font-headline text-xl leading-tight font-black text-on-background mb-2 uppercase">
                                     {categoria.nombre}
                                 </h2>
-                                <p className="font-sans text-sm text-on-surface-variant font-bold">
+                                {/* <p className="font-sans text-sm text-on-surface-variant font-bold">
                                     {categoria.totalComercios} {categoria.totalComercios === 1 ? 'opción' : 'opciones'}
-                                </p>
+                                </p> */}
                             </article>
 
                             {/* Action Badge */}

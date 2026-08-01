@@ -23,7 +23,7 @@ export async function getCategorias(rubroID: string) {
 export async function getCategoria(slug: string) {
     const { data, error } = await supabase
         .from('categorias')
-        .select('id, nombre, slug')
+        .select('id, nombre, slug, rubro_id')
         .eq('slug', slug)
         .maybeSingle(); // Retorna un objeto o null si no se encuentra
     if (error) {
