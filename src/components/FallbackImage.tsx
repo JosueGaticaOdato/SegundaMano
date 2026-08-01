@@ -12,11 +12,11 @@ export default function FallbackImage({
   alt = '',
   ...props
 }: FallbackImageProps) {
-  const [imgSrc, setImgSrc] = useState<string>(src || fallbackSrc);
+  const [imgSrc, setImgSrc] = useState<string>((src as string) || fallbackSrc);
 
   // If the source changes from the parent, update our state
   useEffect(() => {
-    setImgSrc(src || fallbackSrc);
+    setImgSrc((src as string) || fallbackSrc);
   }, [src, fallbackSrc]);
 
   return (

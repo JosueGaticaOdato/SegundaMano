@@ -81,6 +81,10 @@ export default function DashboardContainer() {
   const [filterRubroId, setFilterRubroId] = useState('');
   const [filterCategoriaId, setFilterCategoriaId] = useState('');
 
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
   // Modal / Form states
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<'create' | 'edit'>('create');
@@ -378,6 +382,28 @@ export default function DashboardContainer() {
     }
   }, [filterRubroId, categorias, filterCategoriaId]);
 
+  // Pagination indexes
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+  const currentRubros = filteredRubros.slice(indexOfFirstItem, indexOfLastItem);
+  const currentCategorias = filteredCategorias.slice(indexOfFirstItem, indexOfLastItem);
+  const currentNegocios = filteredNegocios.slice(indexOfFirstItem, indexOfLastItem);
+
+  const getPageCount = () => {
+    if (activeTab === 'rubros') return Math.ceil(filteredRubros.length / itemsPerPage);
+    if (activeTab === 'categorias') return Math.ceil(filteredCategorias.length / itemsPerPage);
+    return Math.ceil(filteredNegocios.length / itemsPerPage);
+  };
+  const totalPages = getPageCount();
+
+  // Clamp currentPage when totalPages shrinks
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(totalPages);
+    }
+  }, [totalPages, currentPage]);
+
   return (
     <div className="flex-grow w-full max-w-[1440px] mx-auto px-4 md:px-16 py-12 flex flex-col gap-8 pb-32">
       {/* Title Header Row */}
@@ -436,6 +462,7 @@ export default function DashboardContainer() {
                 setSearchQuery('');
                 setFilterRubroId('');
                 setFilterCategoriaId('');
+                setCurrentPage(1);
               }}
               className={`flex items-center gap-2 px-6 py-3 border-4 border-on-background font-headline text-sm font-black uppercase shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-all cursor-pointer select-none font-bold
                 ${isActive ? 'bg-secondary-fixed text-on-background translate-y-0.5 translate-x-0.5 shadow-[2px_2px_0px_rgba(0,0,0,1)]' : 'bg-white text-on-background hover:scale-105'}
@@ -462,7 +489,10 @@ export default function DashboardContainer() {
             type="text"
             placeholder={`Buscar en ${activeTab === 'rubros' ? 'Rubros' : activeTab === 'categorias' ? 'Categorías' : 'Negocios'}...`}
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1);
+            }}
             className="w-full bg-slate-50 border-4 border-on-background p-3 pl-12 font-sans font-medium focus:bg-white focus:outline-none transition-colors"
           />
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-on-surface-variant" />
@@ -477,7 +507,10 @@ export default function DashboardContainer() {
               <span>Rubro:</span>
               <select
                 value={filterRubroId}
-                onChange={(e) => setFilterRubroId(e.target.value)}
+                onChange={(e) => {
+                  setFilterRubroId(e.target.value);
+                  setCurrentPage(1);
+                }}
                 className="bg-transparent focus:outline-none font-sans font-medium pr-4 cursor-pointer"
               >
                 <option value="">TODOS</option>
@@ -497,7 +530,10 @@ export default function DashboardContainer() {
               <span>Categoría:</span>
               <select
                 value={filterCategoriaId}
-                onChange={(e) => setFilterCategoriaId(e.target.value)}
+                onChange={(e) => {
+                  setFilterCategoriaId(e.target.value);
+                  setCurrentPage(1);
+                }}
                 className="bg-transparent focus:outline-none font-sans font-medium pr-4 cursor-pointer"
               >
                 <option value="">TODAS</option>
@@ -532,7 +568,8 @@ export default function DashboardContainer() {
           </span>
         </div>
       ) : (
-        <div className="overflow-x-auto bg-white border-4 border-on-background brutal-shadow">
+        <>
+          <div className="overflow-x-auto bg-white border-4 border-on-background brutal-shadow">
           {activeTab === 'rubros' && (
             <table className="w-full text-left border-collapse font-sans">
               <thead>
@@ -552,7 +589,7 @@ export default function DashboardContainer() {
                     </td>
                   </tr>
                 ) : (
-                  filteredRubros.map((item) => (
+                  currentRubros.map((item) => (
                     <tr key={item.id} className="hover:bg-slate-50 transition-colors font-medium">
                       <td className="p-4 border-r-2 border-on-background w-24">
                         {item.imagenFondo ? (
@@ -560,9 +597,6 @@ export default function DashboardContainer() {
                             src={item.imagenFondo}
                             alt={item.nombre}
                             className="w-12 h-12 object-cover border-2 border-on-background shadow-[2px_2px_0px_rgba(0,0,0,1)] bg-slate-100"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = '/notfound.jpeg';
-                            }}
                           />
                         ) : (
                           <div className="w-12 h-12 border-2 border-on-background bg-slate-100 flex items-center justify-center font-bold text-slate-400 text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)]">
@@ -623,7 +657,7 @@ export default function DashboardContainer() {
                     </td>
                   </tr>
                 ) : (
-                  filteredCategorias.map((item) => (
+                  currentCategorias.map((item) => (
                     <tr key={item.id} className="hover:bg-slate-50 transition-colors font-medium">
                       <td className="p-4 border-r-2 border-on-background w-24">
                         {item.imagenFondo ? (
@@ -631,9 +665,6 @@ export default function DashboardContainer() {
                             src={item.imagenFondo}
                             alt={item.nombre}
                             className="w-12 h-12 object-cover border-2 border-on-background shadow-[2px_2px_0px_rgba(0,0,0,1)] bg-slate-100"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = '/notfound.jpeg';
-                            }}
                           />
                         ) : (
                           <div className="w-12 h-12 border-2 border-on-background bg-slate-100 flex items-center justify-center font-bold text-slate-400 text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)]">
@@ -698,7 +729,7 @@ export default function DashboardContainer() {
                     </td>
                   </tr>
                 ) : (
-                  filteredNegocios.map((item) => (
+                  currentNegocios.map((item) => (
                     <tr key={item.id} className="hover:bg-slate-50 transition-colors font-medium">
                       <td className="p-3 border-r-2 border-on-background w-16">
                         {item.imagen ? (
@@ -706,9 +737,6 @@ export default function DashboardContainer() {
                             src={item.imagen}
                             alt={item.nombre}
                             className="w-10 h-10 object-cover border-2 border-on-background shadow-[2px_2px_0px_rgba(0,0,0,1)] bg-slate-100"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = '/notfound.jpeg';
-                            }}
                           />
                         ) : (
                           <div className="w-10 h-10 border-2 border-on-background bg-slate-100 flex items-center justify-center font-bold text-slate-400 text-[10px] shadow-[2px_2px_0px_rgba(0,0,0,1)]">
@@ -787,7 +815,68 @@ export default function DashboardContainer() {
             </table>
           )}
         </div>
-      )}
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white border-4 border-on-background p-4 brutal-shadow mt-4">
+            <span className="font-sans text-sm font-bold text-on-background">
+              Mostrando {indexOfFirstItem + 1} - {Math.min(indexOfLastItem, activeTab === 'rubros' ? filteredRubros.length : activeTab === 'categorias' ? filteredCategorias.length : filteredNegocios.length)} de {activeTab === 'rubros' ? filteredRubros.length : activeTab === 'categorias' ? filteredCategorias.length : filteredNegocios.length}
+            </span>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 border-2 border-on-background font-headline text-xs font-black uppercase shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-1 cursor-pointer font-bold
+                  ${currentPage === 1 
+                    ? 'bg-slate-100 text-slate-400 cursor-not-allowed shadow-none border-slate-300' 
+                    : 'bg-white text-on-background hover:translate-y-0.5 hover:shadow-[1px_1px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none'
+                  }`}
+              >
+                Anterior
+              </button>
+              
+              {/* Page numbers */}
+              <div className="flex gap-1">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                  const isActive = page === currentPage;
+                  if (totalPages > 6 && Math.abs(page - currentPage) > 1 && page !== 1 && page !== totalPages) {
+                    if (page === 2 && currentPage > 3) return <span key={page} className="px-1.5 font-bold self-end">...</span>;
+                    if (page === totalPages - 1 && currentPage < totalPages - 2) return <span key={page} className="px-1.5 font-bold self-end">...</span>;
+                    return null;
+                  }
+                  
+                  return (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page)}
+                      className={`w-8 h-8 flex items-center justify-center border-2 border-on-background font-headline text-xs font-black shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-all cursor-pointer font-bold
+                        ${isActive 
+                          ? 'bg-secondary-fixed text-on-background translate-y-0.5 shadow-[1px_1px_0px_rgba(0,0,0,1)]' 
+                          : 'bg-white text-on-background hover:translate-y-0.5 hover:shadow-[1px_1px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none'
+                        }`}
+                    >
+                      {page}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 border-2 border-on-background font-headline text-xs font-black uppercase shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-1 cursor-pointer font-bold
+                  ${currentPage === totalPages 
+                    ? 'bg-slate-100 text-slate-400 cursor-not-allowed shadow-none border-slate-300' 
+                    : 'bg-white text-on-background hover:translate-y-0.5 hover:shadow-[1px_1px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none'
+                  }`}
+              >
+                Siguiente
+              </button>
+            </div>
+          </div>
+        )}
+      </>
+    )}
 
       {/* CRUD Overlay Modal Form */}
       {isModalOpen && (
@@ -866,9 +955,6 @@ export default function DashboardContainer() {
                           src={rubroForm.imagenFondo}
                           alt="preview"
                           className="w-full h-full object-cover"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = '/notfound.jpeg';
-                          }}
                         />
                       </div>
                     )}
@@ -933,9 +1019,6 @@ export default function DashboardContainer() {
                           src={categoriaForm.imagenFondo}
                           alt="preview"
                           className="w-full h-full object-cover"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = '/notfound.jpeg';
-                          }}
                         />
                       </div>
                     )}
@@ -1126,9 +1209,6 @@ export default function DashboardContainer() {
                           src={negocioForm.imagen}
                           alt="preview"
                           className="w-full h-full object-cover"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = '/notfound.jpeg';
-                          }}
                         />
                       </div>
                     )}
