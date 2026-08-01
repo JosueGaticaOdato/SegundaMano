@@ -15,6 +15,7 @@
   --color-primary: #8000c6;
   --color-secondary-fixed: #eaea00;
   --color-tertiary: #ab0100;
+  --color-cuaternary: #FF9900;
   --color-whatsapp: #25d366;
 }
 
@@ -61,4 +62,36 @@
   background-color: #f9f9f9;
   background-image: radial-gradient(#dadada 1px, transparent 1px);
   background-size: 16px 16px;
+}
+
+/* Floating Sticker Animation */
+.floating-sticker {
+    position: fixed; 
+    bottom: 20px;    
+    right: 20px;    
+    width: 100px;    
+    z-index: 9999;  
+    animation: floatAnim 4s ease-in-out infinite;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.floating-sticker img {
+    width: 100%;
+    height: auto;
+    pointer-events: auto;
+    filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 1)); 
+}
+
+@media (min-width: 768px) {
+    .floating-sticker {
+        bottom: 40px;
+        right: 40px;
+        width: 140px;
+    }
+}
+
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
 }

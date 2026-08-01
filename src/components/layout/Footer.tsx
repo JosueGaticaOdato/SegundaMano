@@ -12,7 +12,8 @@ export default function Footer() {
             CLASIFK2
           </Link>
           <p className="mt-2 font-label text-xs uppercase tracking-wider opacity-90 max-w-xl">
-            2026 CLASIFK2 - EL QUE BUSCA ENCUENTRA. GUÍA COMERCIAL Y DE SERVICIOS PARA LA CIUDAD DE CHIVILCOY.
+            2026 CLASIFK2 - EL QUE BUSCA ENCUENTRA. <br/>
+            GUÍA COMERCIAL Y DE SERVICIOS PARA LA CIUDAD DE CHIVILCOY.
           </p>
         </div>
 

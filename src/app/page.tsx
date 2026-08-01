@@ -52,9 +52,6 @@ export default async function Home() {
               Buscar <ArrowRight className="w-5 h-5" />
             </button>
           </form>
-
-          {/* Tendencias */}
-
         </div>
       </header>
 
@@ -70,12 +67,6 @@ export default async function Home() {
             <p className="font-sans text-sm md:text-base text-on-surface-variant mt-2 font-medium">
               Encuentra los mejores comercios, industrias y servicios de la ciudad de Chivilcoy.
             </p>
-          </div>
-
-          <div className="mt-4 md:mt-0 flex gap-2">
-            <div className="bg-on-background text-on-primary p-2 brutal-border-sm">
-              <Grid className="w-5 h-5" />
-            </div>
           </div>
         </div>
 

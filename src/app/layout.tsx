@@ -18,6 +18,11 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
           {children}
         </main>
         <Footer/>
+        
+        {/* Sticker flotante animado */}
+        <div className="floating-sticker">
+          <img src="/imagen3.png" alt="Sticker clasifk2" />
+        </div>
       </body>
     </html>
   );

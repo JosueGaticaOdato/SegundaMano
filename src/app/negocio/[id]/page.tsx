@@ -26,7 +26,7 @@ export default async function Negocio({ params }: { params: { id: string } }) {
     const waUrl = negocio.whatsapp ? `https://wa.me/${negocio.whatsapp.replace('+', '').replace(/\s+/g, '')}?text=${text}` : "";
 
     return (
-        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-16 py-12 flex flex-col gap-8">
+        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-16 py-12 flex flex-col gap-8 bg-cuaternary">
 
             {/* Navigation & Header Actions Row */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -106,61 +106,65 @@ export default async function Negocio({ params }: { params: { id: string } }) {
                             </div>
                         </div>
 
-                        {/* Phone (Optional) */}
-                        {negocio.telefono && (
-                            <div className="flex items-start gap-4">
-                                <div className="bg-primary p-3 rounded-full border-2 border-on-background text-on-primary mt-1 flex-shrink-0 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-                                    <Phone className="w-5 h-5" />
-                                </div>
-                                <div>
-                                    <p className="font-label text-xs text-on-surface-variant uppercase font-bold mb-1">Teléfono</p>
-                                    <a href={`tel:${negocio.telefono}`} className="font-sans text-base md:text-lg font-bold text-on-background hover:underline">
-                                        {negocio.telefono}
-                                    </a>
-                                </div>
-                            </div>
-                        )}
+                        {negocio.verificado && (
+                            <>
+                                {/* Phone (Optional) */}
+                                {negocio.telefono && (
+                                    <div className="flex items-start gap-4">
+                                        <div className="bg-primary p-3 rounded-full border-2 border-on-background text-on-primary mt-1 flex-shrink-0 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+                                            <Phone className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <p className="font-label text-xs text-on-surface-variant uppercase font-bold mb-1">Teléfono</p>
+                                            <a href={`tel:${negocio.telefono}`} className="font-sans text-base md:text-lg font-bold text-on-background hover:underline">
+                                                {negocio.telefono}
+                                            </a>
+                                        </div>
+                                    </div>
+                                )}
 
-                        {/* Email (Optional) */}
-                        {negocio.email && (
-                            <div className="flex items-start gap-4">
-                                <div className="bg-[#ff00ff] p-3 rounded-full border-2 border-on-background text-white mt-1 flex-shrink-0 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-                                    <Mail className="w-5 h-5" />
-                                </div>
-                                <div>
-                                    <p className="font-label text-xs text-on-surface-variant uppercase font-bold mb-1">Correo Electrónico</p>
-                                    <a href={`mailto:${negocio.email}`} className="font-sans text-sm md:text-base font-bold text-on-background hover:underline break-all">
-                                        {negocio.email}
-                                    </a>
-                                </div>
-                            </div>
-                        )}
+                                {/* Email (Optional) */}
+                                {negocio.email && (
+                                    <div className="flex items-start gap-4">
+                                        <div className="bg-[#ff00ff] p-3 rounded-full border-2 border-on-background text-white mt-1 flex-shrink-0 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+                                            <Mail className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <p className="font-label text-xs text-on-surface-variant uppercase font-bold mb-1">Correo Electrónico</p>
+                                            <a href={`mailto:${negocio.email}`} className="font-sans text-sm md:text-base font-bold text-on-background hover:underline break-all">
+                                                {negocio.email}
+                                            </a>
+                                        </div>
+                                    </div>
+                                )}
 
-                        {/* Web (Optional) */}
-                        {negocio.web && (
-                            <div className="flex items-start gap-4">
-                                <div className="bg-cyan-400 p-3 rounded-full border-2 border-on-background text-on-background mt-1 flex-shrink-0 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-                                    <Globe className="w-5 h-5" />
-                                </div>
-                                <div>
-                                    <p className="font-label text-xs text-on-surface-variant uppercase font-bold mb-1">Sitio Web</p>
-                                    <a href={negocio.web} target="_blank" rel="noopener noreferrer" className="font-sans text-sm md:text-base font-bold text-on-background hover:underline flex items-center gap-1">
-                                        {negocio.web.replace('https://', '')} <ExternalLink className="w-3.5 h-3.5" />
-                                    </a>
-                                </div>
-                            </div>
-                        )}
+                                {/* Web (Optional) */}
+                                {negocio.web && (
+                                    <div className="flex items-start gap-4">
+                                        <div className="bg-cyan-400 p-3 rounded-full border-2 border-on-background text-on-background mt-1 flex-shrink-0 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+                                            <Globe className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <p className="font-label text-xs text-on-surface-variant uppercase font-bold mb-1">Sitio Web</p>
+                                            <a href={negocio.web} target="_blank" rel="noopener noreferrer" className="font-sans text-sm md:text-base font-bold text-on-background hover:underline flex items-center gap-1">
+                                                {negocio.web.replace('https://', '')} <ExternalLink className="w-3.5 h-3.5" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                )}
 
-                        {/* Major CTA: Contact by Whatsapp */}
-                        <a
-                            href={waUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full bg-whatsapp text-white border-4 border-on-background rounded-xl p-4 flex items-center justify-center gap-3 font-headline text-sm md:text-base font-black brutalist-shadow-sm hover:scale-105 active:translate-y-1 active:shadow-none transition-all mt-4 cursor-pointer text-center"
-                        >
-                            <MessageSquare className="w-6 h-6 fill-current" />
-                            CONTACTAR POR WHATSAPP
-                        </a>
+                                {/* Major CTA: Contact by Whatsapp */}
+                                <a
+                                    href={waUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-full bg-whatsapp text-white border-4 border-on-background rounded-xl p-4 flex items-center justify-center gap-3 font-headline text-sm md:text-base font-black brutalist-shadow-sm hover:scale-105 active:translate-y-1 active:shadow-none transition-all mt-4 cursor-pointer text-center"
+                                >
+                                    <MessageSquare className="w-6 h-6 fill-current" />
+                                    CONTACTAR POR WHATSAPP
+                                </a>
+                            </>
+                        )}
                     </div>
                 </div>
 

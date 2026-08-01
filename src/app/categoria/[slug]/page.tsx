@@ -96,9 +96,9 @@ export default async function Categoria({ params }: { params: { slug: string } }
                         </div>
                     ) : (
                         <li className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                            {negocios.map((negocio) => (
-                                <CardNegocio key={negocio.id} negocio={negocio} />
-                            ))}
+                           {negocios.map((negocio) => (
+                            <CardNegocio key={negocio.id} negocio={negocio} />
+                           ))}
                         </li>
                     )}
 

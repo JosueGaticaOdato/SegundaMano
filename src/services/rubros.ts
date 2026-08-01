@@ -12,7 +12,7 @@ export async function getRubros() {
     // }];
     const { data, error } = await supabase
         .from('rubros')
-        .select('id, nombre, slug, icono')
+        .select('id, nombre, slug')
         .order('nombre', { ascending: true }); // Los ordenamos alfabéticamente
 
     if (error) {
@@ -28,7 +28,7 @@ export async function getRubro(rubroID: string) {
 
     const { data, error } = await supabase
         .from('rubros')
-        .select('id, nombre, slug, icono')
+        .select('id, nombre, slug')
         .eq('id', rubroID)
         .maybeSingle(); // Retorna un objeto o null si no se encuentra
 
@@ -44,7 +44,7 @@ export async function getRubro(rubroID: string) {
 export async function getRubroBySlug(slug: string) {
     const { data, error } = await supabase
         .from('rubros')
-        .select('id, nombre, slug, icono')
+        .select('id, nombre, slug')
         .eq('slug', slug)
         .maybeSingle(); // Retorna un objeto o null si no se encuentra
     if (error) {
