@@ -5,6 +5,8 @@ import { getRubro, getRubroBySlug } from "@/services/rubros";
 import { ArrowLeft, Search } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getPaginationRange } from "@/utils/pagination";
+
 
 interface PageProps {
     params: Promise<{ slug?: string[] }>;
@@ -157,7 +159,18 @@ export default async function Categoria({ params, searchParams }: PageProps) {
                                     )}
 
                                     {/* Números de página */}
-                                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
+                                    {getPaginationRange(activePage, totalPages).map((pageNum, idx) => {
+                                        if (pageNum === '...') {
+                                            return (
+                                                <span
+                                                    key={`ellipsis-${idx}`}
+                                                    className="w-12 h-12 flex items-center justify-center font-headline text-lg font-black cursor-default select-none text-on-surface-variant"
+                                                >
+                                                    ...
+                                                </span>
+                                            );
+                                        }
+
                                         const isActive = pageNum === activePage;
                                         return isActive ? (
                                             <span
@@ -169,7 +182,7 @@ export default async function Categoria({ params, searchParams }: PageProps) {
                                         ) : (
                                             <Link
                                                 key={pageNum}
-                                                href={getPageHref(pageNum)}
+                                                href={getPageHref(pageNum as number)}
                                                 className="bg-white text-on-background border-4 border-on-background shadow-[4px_4px_0px_rgba(0,0,0,1)] w-12 h-12 flex items-center justify-center font-headline text-lg font-black hover:scale-105 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
                                             >
                                                 {pageNum}

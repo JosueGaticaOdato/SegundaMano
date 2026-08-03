@@ -38,6 +38,8 @@ from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+from playwright.sync_api import sync_playwright
 
 try:
     from dotenv import load_dotenv
@@ -62,6 +64,8 @@ REQUEST_DELAY = 0.8          # segundos entre requests, para no bombardear el si
 REQUEST_TIMEOUT = 25
 MAX_RETRIES = 3
 MAX_PAGES_SAFETY = 300       # tope de paginas por listado, por seguridad
+BRAVE_SESSION_DIR = os.path.join(os.path.dirname(__file__), "brave-session")
+BRAVE_EXE = r"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
 
 session = requests.Session()
 session.headers.update({
@@ -71,12 +75,17 @@ session.headers.update({
     )
 })
 
+browser_fetcher = None
+
 
 # --------------------------------------------------------------------------
 # Utilidades HTTP
 # --------------------------------------------------------------------------
 
 def get_soup(url: str) -> BeautifulSoup:
+    if browser_fetcher is not None:
+        return browser_fetcher.get_soup(url)
+
     last_err = None
     for attempt in range(1, MAX_RETRIES + 1):
         try:
@@ -89,6 +98,74 @@ def get_soup(url: str) -> BeautifulSoup:
             log.warning("Fallo request a %s (intento %d/%d): %s", url, attempt, MAX_RETRIES, e)
             time.sleep(REQUEST_DELAY * attempt)
     raise RuntimeError(f"No se pudo obtener {url}: {last_err}")
+
+
+class PlaywrightFetcher:
+    def __init__(self, user_data_dir: str, executable_path: str | None, headless: bool):
+        self.user_data_dir = user_data_dir
+        self.executable_path = executable_path if executable_path and os.path.exists(executable_path) else None
+        self.headless = headless
+        self._pw = None
+        self._context = None
+        self._page = None
+
+    def __enter__(self):
+        self._pw = sync_playwright().start()
+        launch_kwargs = {
+            "user_data_dir": self.user_data_dir,
+            "headless": self.headless,
+            "args": ["--disable-blink-features=AutomationControlled"],
+        }
+        if self.executable_path:
+            launch_kwargs["executable_path"] = self.executable_path
+
+        self._context = self._pw.chromium.launch_persistent_context(**launch_kwargs)
+        self._page = self._context.pages[0] if self._context.pages else self._context.new_page()
+        self._page.set_default_timeout(REQUEST_TIMEOUT * 1000)
+        return self
+
+    def __exit__(self, exc_type, exc, tb):
+        if self._context:
+            self._context.close()
+        if self._pw:
+            self._pw.stop()
+
+    def get_soup(self, url: str) -> BeautifulSoup:
+        last_err = None
+        for attempt in range(1, MAX_RETRIES + 1):
+            try:
+                self._page.goto(url, wait_until="networkidle", timeout=REQUEST_TIMEOUT * 1000)
+                self._wait_if_cloudflare_challenge(url)
+                html = self._page.content()
+                time.sleep(REQUEST_DELAY)
+                return BeautifulSoup(html, "html.parser")
+            except PlaywrightTimeoutError as e:
+                last_err = e
+                log.warning("Timeout abriendo %s (intento %d/%d): %s", url, attempt, MAX_RETRIES, e)
+                time.sleep(REQUEST_DELAY * attempt)
+            except Exception as e:
+                last_err = e
+                log.warning("Fallo Playwright en %s (intento %d/%d): %s", url, attempt, MAX_RETRIES, e)
+                time.sleep(REQUEST_DELAY * attempt)
+        raise RuntimeError(f"No se pudo obtener {url} con Playwright: {last_err}")
+
+    def _wait_if_cloudflare_challenge(self, target_url: str):
+        current_url = self._page.url
+        if "challenge" not in current_url.lower():
+            return
+
+        log.warning(
+            "Cloudflare mostro un challenge para %s. Resolve la ventana de Brave si hace falta.",
+            target_url,
+        )
+        try:
+            self._page.wait_for_url(
+                lambda url: "challenge" not in url.lower(),
+                timeout=120000,
+            )
+            self._page.wait_for_load_state("networkidle", timeout=REQUEST_TIMEOUT * 1000)
+        except PlaywrightTimeoutError:
+            log.warning("La pagina sigue en challenge luego de esperar. Se intentara parsear el HTML actual.")
 
 
 def slug_from_href(href: str) -> str:
@@ -129,14 +206,14 @@ def scrape_rubros_y_categorias():
         rubro_nombre = clean_text(rubro_a.get_text())
         # Sacar el contador "(26)" del final del nombre
         rubro_nombre = re.sub(r"\(\s*\d+\s*\)\s*$", "", rubro_nombre).strip()
-        rubro_id = rubro_slug
+        rubro_ref = rubro_slug
 
         rubros.append({
-            "id": rubro_id,
+            "_scrape_id": rubro_ref,
             "nombre": rubro_nombre,
             "descripcion": "",
             "slug": rubro_slug,
-            "imagenFondo": "",
+            "imagen_fondo": "",
         })
 
         sub_items = li.select(":scope > ul > li")
@@ -151,25 +228,26 @@ def scrape_rubros_y_categorias():
                 cat_nombre = clean_text(sub_a.get_text())
 
                 categorias.append({
-                    "id": cat_slug,
-                    "rubroId": rubro_id,
+                    "_scrape_id": cat_slug,
+                    "rubro_id": rubro_ref,
                     "nombre": cat_nombre,
                     "slug": cat_slug,
-                    "imagenFondo": "",
+                    "imagen_fondo": "",
                     "_listing_url": urljoin(BASE_URL, cat_href),
                 })
         else:
             # Rubro sin categorias propias -> el rubro mismo es la pagina
             # de listado. Creamos una categoria "placeholder" para poder
-            # mantener la FK categoriaId en Negocios (ya que en el esquema
+            # mantener la FK categoria_id en Negocios (ya que en el esquema
             # es un campo obligatorio). Ajustable si preferis dejar
-            # categoriaId nulo en estos casos.
+            # categoria_id nulo en estos casos.
+            cat_ref = f"{rubro_ref}-general"
             categorias.append({
-                "id": f"{rubro_id}-general",
-                "rubroId": rubro_id,
+                "_scrape_id": cat_ref,
+                "rubro_id": rubro_ref,
                 "nombre": rubro_nombre,
                 "slug": rubro_slug,
-                "imagenFondo": "",
+                "imagen_fondo": "",
                 "_listing_url": urljoin(BASE_URL, rubro_href),
             })
 
@@ -219,7 +297,7 @@ def parse_negocio_card(section, rubro_id: str, categoria_id: str):
 
     detail_href = nombre_a.get("href", "")
     detail_url = urljoin(BASE_URL, detail_href)
-    negocio_id = slug_from_href(detail_href)
+    negocio_ref = slug_from_href(detail_href)
     nombre = clean_text(nombre_a.get_text())
 
     desc_tag = section.select_one(".summary-desc")
@@ -236,26 +314,21 @@ def parse_negocio_card(section, rubro_id: str, categoria_id: str):
     tel_tag = section.select_one(".contact-info a")
     telefono = clean_text(tel_tag.get_text()) if tel_tag else None
 
-    img_tag = section.select_one(".media-left img")
-    imagen = img_tag.get("src") if img_tag else None
-    if imagen:
-        imagen = urljoin(BASE_URL, imagen)
-
     return {
-        "id": negocio_id,
-        "categoriaId": categoria_id,
-        "rubroId": rubro_id,
+        "_scrape_id": negocio_ref,
+        "categoria_id": categoria_id,
+        "rubro_id": rubro_id,
         "nombre": nombre,
         "descripcion": descripcion,
         "direccion": direccion,
         "telefono": telefono,
         "email": None,       # se completa en enrich_negocio_detalle()
-        "web": None,          # idem
-        "instagram": None,    # idem
-        "facebook": None,     # idem
+        "web": None,
+        "instagram": None,
+        "facebook": None,
         "verificado": False,  # No detecte una senal clara de "verificado" en
                                # el listado (ej. un badge). Ajustar si existe.
-        "imagen": imagen,
+        "imagen": None,
         "horario": None,      # se completa en enrich_negocio_detalle()
         "_detail_url": detail_url,
     }
@@ -308,7 +381,7 @@ def scrape_negocios_de_listado(listing_url: str, rubro_id: str, categoria_id: st
 def enrich_negocio_detalle(negocio: dict):
     """
     Visita la ficha de detalle del negocio para intentar sacar
-    email / web / instagram / facebook / horario.
+    email / horario.
 
     ADVERTENCIA: no tuve una ficha de detalle real para basar los
     selectores, asi que esto es heuristico (busca por patrones de href
@@ -330,20 +403,6 @@ def enrich_negocio_detalle(negocio: dict):
 
         if low.startswith("mailto:") and not negocio.get("email"):
             negocio["email"] = href.replace("mailto:", "").strip()
-        elif "facebook.com" in low and not negocio.get("facebook"):
-            negocio["facebook"] = href
-        elif "instagram.com" in low and not negocio.get("instagram"):
-            negocio["instagram"] = href
-        elif (
-            not negocio.get("web")
-            and low.startswith("http")
-            and "vivichivilcoy.com.ar" not in low
-            and "facebook.com" not in low
-            and "instagram.com" not in low
-            and "twitter.com" not in low
-            and "google.com" not in low
-        ):
-            negocio["web"] = href
 
     # Horario: buscamos algun bloque de texto que contenga la palabra
     # "Horario" cerca (heuristico, ajustar con HTML real).
@@ -360,6 +419,13 @@ def enrich_negocio_detalle(negocio: dict):
 # Orquestacion del scraping completo
 # --------------------------------------------------------------------------
 
+def strip_internal_fields(rows: list[dict]) -> list[dict]:
+    return [
+        {key: value for key, value in row.items() if not key.startswith("_") and key != "id"}
+        for row in rows
+    ]
+
+
 def run_scrape(enrich: bool = True):
     rubros, categorias = scrape_rubros_y_categorias()
 
@@ -368,18 +434,20 @@ def run_scrape(enrich: bool = True):
 
     for cat in categorias:
         listing_url = cat.pop("_listing_url")
-        log.info("Categoria '%s' (%s) -> %s", cat["nombre"], cat["id"], listing_url)
-        negocios = scrape_negocios_de_listado(listing_url, cat["rubroId"], cat["id"])
+        categoria_ref = cat["_scrape_id"]
+        log.info("Categoria '%s' (%s) -> %s", cat["nombre"], categoria_ref, listing_url)
+        negocios = scrape_negocios_de_listado(listing_url, cat["rubro_id"], categoria_ref)
 
         for neg in negocios:
-            if neg["id"] in seen_negocio_ids:
+            negocio_ref = neg["_scrape_id"]
+            if negocio_ref in seen_negocio_ids:
                 # Mismo negocio listado en mas de una categoria: nos
                 # quedamos con la primera ocurrencia para no duplicar la
                 # fila en la tabla negocios (podrias en cambio armar una
                 # tabla puente negocios_categorias si un negocio puede
                 # pertenecer a varias categorias).
                 continue
-            seen_negocio_ids.add(neg["id"])
+            seen_negocio_ids.add(negocio_ref)
             all_negocios.append(neg)
 
     if enrich:
@@ -392,16 +460,20 @@ def run_scrape(enrich: bool = True):
     for neg in all_negocios:
         neg.pop("_detail_url", None)
 
+    rubros_json = strip_internal_fields(rubros)
+    categorias_json = strip_internal_fields(categorias)
+    negocios_json = strip_internal_fields(all_negocios)
+
     with open(RUBROS_JSON, "w", encoding="utf-8") as f:
-        json.dump(rubros, f, ensure_ascii=False, indent=2)
+        json.dump(rubros_json, f, ensure_ascii=False, indent=2)
     with open(CATEGORIAS_JSON, "w", encoding="utf-8") as f:
-        json.dump(categorias, f, ensure_ascii=False, indent=2)
+        json.dump(categorias_json, f, ensure_ascii=False, indent=2)
     with open(NEGOCIOS_JSON, "w", encoding="utf-8") as f:
-        json.dump(all_negocios, f, ensure_ascii=False, indent=2)
+        json.dump(negocios_json, f, ensure_ascii=False, indent=2)
 
     log.info(
         "Listo. %d rubros, %d categorias, %d negocios guardados en %s",
-        len(rubros), len(categorias), len(all_negocios), OUT_DIR,
+        len(rubros_json), len(categorias_json), len(negocios_json), OUT_DIR,
     )
 
 
@@ -422,14 +494,18 @@ def get_supabase_client():
     return create_client(url, key)
 
 
-def upsert_batches(client, table: str, rows: list, batch_size: int = 200):
+def insert_batches(client, table: str, rows: list, batch_size: int = 200):
     if not rows:
         log.info("Nada para subir en '%s'", table)
-        return
+        return []
+    inserted = []
     for i in range(0, len(rows), batch_size):
         batch = rows[i : i + batch_size]
-        client.table(table).upsert(batch, on_conflict="id").execute()
+        result = client.table(table).insert(batch).execute()
+        if result.data:
+            inserted.extend(result.data)
         log.info("  %s: subidas filas %d-%d de %d", table, i + 1, i + len(batch), len(rows))
+    return inserted
 
 
 def run_upload():
@@ -443,13 +519,38 @@ def run_upload():
     client = get_supabase_client()
 
     log.info("Subiendo rubros...")
-    upsert_batches(client, "rubros", rubros)
+    inserted_rubros = insert_batches(client, "rubros", rubros)
+    rubro_ids_by_slug = {row["slug"]: row["id"] for row in inserted_rubros if row.get("slug") and row.get("id")}
+
+    categorias_for_upload = []
+    for categoria in categorias:
+        row = dict(categoria)
+        rubro_slug = row.get("rubro_id")
+        if rubro_slug:
+            row["rubro_id"] = rubro_ids_by_slug.get(rubro_slug, rubro_slug)
+        categorias_for_upload.append(row)
 
     log.info("Subiendo categorias...")
-    upsert_batches(client, "categorias", categorias)
+    inserted_categorias = insert_batches(client, "categorias", categorias_for_upload)
+    categoria_ids_by_slug = {
+        row["slug"]: row["id"]
+        for row in inserted_categorias
+        if row.get("slug") and row.get("id")
+    }
+
+    negocios_for_upload = []
+    for negocio in negocios:
+        row = dict(negocio)
+        rubro_slug = row.get("rubro_id")
+        categoria_slug = row.get("categoria_id")
+        if rubro_slug:
+            row["rubro_id"] = rubro_ids_by_slug.get(rubro_slug, rubro_slug)
+        if categoria_slug:
+            row["categoria_id"] = categoria_ids_by_slug.get(categoria_slug, categoria_slug)
+        negocios_for_upload.append(row)
 
     log.info("Subiendo negocios...")
-    upsert_batches(client, "negocios", negocios)
+    insert_batches(client, "negocios", negocios_for_upload)
 
     log.info("Carga a Supabase finalizada.")
 
@@ -459,6 +560,8 @@ def run_upload():
 # --------------------------------------------------------------------------
 
 def main():
+    global browser_fetcher
+
     parser = argparse.ArgumentParser(description="Scraper vivichivilcoy.com.ar -> Supabase")
     parser.add_argument(
         "accion",
@@ -472,10 +575,36 @@ def main():
         action="store_true",
         help="No visitar las fichas de detalle (mas rapido, pero sin email/web/instagram/facebook/horario)",
     )
+    parser.add_argument(
+        "--requests",
+        action="store_true",
+        help="Usar requests en vez de Playwright. Por defecto el scrape usa Playwright/Brave.",
+    )
+    parser.add_argument(
+        "--headless",
+        action="store_true",
+        help="Ejecutar el navegador sin ventana. Usalo solo si la sesion brave-session ya paso Cloudflare.",
+    )
+    parser.add_argument(
+        "--user-data-dir",
+        default=BRAVE_SESSION_DIR,
+        help=f"Perfil persistente de navegador para Playwright. Default: {BRAVE_SESSION_DIR}",
+    )
+    parser.add_argument(
+        "--browser-exe",
+        default=BRAVE_EXE,
+        help=f"Ruta al ejecutable de Brave/Chromium. Default: {BRAVE_EXE}",
+    )
     args = parser.parse_args()
 
     if args.accion in ("scrape", "all"):
-        run_scrape(enrich=not args.no_enrich)
+        if args.requests:
+            run_scrape(enrich=not args.no_enrich)
+        else:
+            with PlaywrightFetcher(args.user_data_dir, args.browser_exe, args.headless) as fetcher:
+                browser_fetcher = fetcher
+                run_scrape(enrich=not args.no_enrich)
+                browser_fetcher = None
     if args.accion in ("upload", "all"):
         run_upload()
 
