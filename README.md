@@ -40,11 +40,14 @@ Asegúrate de tener instalado en tu sistema:
     ```
 
 3.  **Configurar las Variables de Entorno**:
-    Crea un archivo `.env.local` en la raíz del proyecto y añade tus credenciales de Supabase (puedes tomar como base el archivo `.env` si estuviera disponible):
+    Crea un archivo `.env.local` en la raíz del proyecto y añade las credenciales de Supabase y las contraseñas requeridas:
     ```env
     NEXT_PUBLIC_SUPABASE_URL=https://tu-proyecto-supabase.supabase.co
     NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=tu-anon-key-de-publicacion-supabase
+    SUPABASE_SERVICE_ROLE_KEY=tu-service-role-key-de-supabase
+    ADMIN_PASSWORD=tu-contrasena-personalizada-de-admin
     ```
+    *(Nota: `SUPABASE_SERVICE_ROLE_KEY` es necesario para que el panel de administración pueda saltar las políticas de seguridad (RLS) al insertar, editar o eliminar registros y al subir archivos a Storage. `ADMIN_PASSWORD` define la contraseña de inicio de sesión para el panel de control.)*
 
 4.  **Ejecutar en Entorno de Desarrollo**:
     Para levantar el servidor local de desarrollo:
@@ -71,7 +74,7 @@ Asegúrate de tener instalado en tu sistema:
 
 ## 🗄️ Estructura de la Base de Datos (Supabase)
 
-El modelo de datos está estructurado en base a una jerarquía relacional que conecta rubros generales con categorías específicas, y estas a su vez con los comercios o negocios individuales (según el diagrama de entidad-relación `DER.drawio`):
+El modelo de datos está estructurado en base a una jerarquía relacional que conecta rubros generales con categorías específicas, y estas a su vez con los negocios individuales (los identificadores se almacenan como cadenas de texto para compatibilidad y simplicidad en la importación de datos):
 
 ```mermaid
 erDiagram
@@ -79,39 +82,37 @@ erDiagram
     CATEGORIAS ||--o{ NEGOCIOS : "pertenece"
     
     RUBROS {
-        uuid id PK
-        string nombre
-        string slug
-        string descripcion
-        string imagenFondo
+        text id PK
+        text nombre
+        text slug
+        text descripcion
+        text imagen_fondo
     }
     
     CATEGORIAS {
-        uuid id PK
-        uuid rubro_id FK
-        string nombre
-        string slug
-        string imagenFondo
+        text id PK
+        text rubro_id FK
+        text nombre
+        text slug
+        text imagen_fondo
     }
     
     NEGOCIOS {
-        uuid id PK
-        uuid categoria_id FK
-        uuid rubro_id FK
-        string nombre
-        string descripcion
-        string direccion
-        string telefono
-        string email
-        string web
-        string instagram
-        string facebook
-        string whatsapp
+        text id PK
+        text categoria_id FK
+        text rubro_id FK
+        text nombre
+        text slug
+        text descripcion
+        text direccion
+        text telefono
+        text email
+        text web
+        text instagram
+        text facebook
         boolean verificado
-        boolean destacado
-        string imagen
-        string horario
-        string zona
+        text imagen
+        text horario
     }
 ```
 
@@ -119,7 +120,7 @@ erDiagram
 
 1.  **`rubros`**: Sectores macro de la economía y servicios (ej. *Gastronomía*, *Construcción*, *Salud*, *Automotores*).
 2.  **`categorias`**: Agrupaciones específicas dentro de cada rubro (ej. *Pizzerías*, *Ferreterías*, *Dentistas*, *Mecánicos*). Se vinculan a un `rubro_id`.
-3.  **`negocios`**: Fichas de los comercios. Cada negocio contiene datos de contacto directo, imágenes, ubicación, horarios de atención y banderas de estado (`verificado` y `destacado`).
+3.  **`negocios`**: Fichas de los comercios. Cada negocio contiene datos de contacto directo, imágenes, ubicación, horarios de atención y la bandera de estado (`verificado`).
 
 ---
 
@@ -133,7 +134,9 @@ El sistema de enrutamiento dinámico define las siguientes secciones:
     *   **Búsqueda General**: Si recibe el parámetro query `?search=texto`, realiza una consulta en Supabase combinando coincidencias tipográficas (`ilike`) en nombres de negocios, descripciones, categorías y rubros.
     *   **Vista de Categoría**: Muestra el listado de negocios pertenecientes a la categoría solicitada por su `slug`.
     *   **Vista de Rubro Alternativa**: Si el `slug` pertenece a un rubro, lista directamente todos los negocios de ese rubro.
-*   **`/negocio/[id]`**: Ficha técnica interactiva del negocio. Muestra imágenes, descripción, horarios, dirección y enlaces a redes sociales o sitios web. Incluye un botón de acción principal para **Contactar por WhatsApp** con un texto predefinido personalizado.
+*   **`/negocio/[id]`**: Ficha técnica interactiva del negocio. Muestra imágenes (con componente de fallback ante errores de carga), descripción, horarios, dirección y enlaces a redes sociales o sitios web. Incluye un botón de acción principal para **Contactar por WhatsApp** con un texto predefinido personalizado.
+*   **`/admin/login`**: Pantalla de inicio de sesión del Panel de Administración. Requiere la clave de seguridad `ADMIN_PASSWORD`.
+*   **`/admin`**: Panel de control administrativo protegido por sesión (cookie `admin_session`). Contiene una interfaz unificada para la gestión CRUD completa (Agregar, Modificar, Eliminar) de Rubros, Categorías y Negocios, con buscador y filtros.
 *   **`/quienes-somos`**: Sección institucional que describe los valores y el origen de CLASIFK2.
 *   **`/revista`**: Información informativa sobre dónde adquirir la edición física y digital de la revista comercial.
 *   **`/donde-llega`**: Mapa e información de cobertura publicitaria (abarcando Chivilcoy, Alberti, Mercedes, Suipacha, Luján, Bragado, Chacabuco, CABA y Costa Atlántica).
@@ -147,7 +150,19 @@ La arquitectura del proyecto sigue una convención limpia y modular dentro del d
 
 ```text
 src/
-├── app/                  # Páginas, layouts y estilos globales (App Router)
+├── app/                  # Páginas, layouts, rutas de API y estilos globales (App Router)
+│   ├── admin/            # Panel de control administrativo
+│   │   ├── login/        # Formulario de inicio de sesión administrativo
+│   │   └── page.tsx      # Dashboard unificado de gestión de datos
+│   ├── api/              # Rutas API del backend
+│   │   └── admin/        # Endpoints administrativos protegidos
+│   │       ├── categorias/   # CRUD para categorías ([id]/route.ts y route.ts)
+│   │       ├── negocios/     # CRUD para negocios ([id]/route.ts y route.ts)
+│   │       ├── rubros/       # CRUD para rubros ([id]/route.ts y route.ts)
+│   │       ├── data/         # Carga inicial unificada del panel administrativo
+│   │       ├── login/        # Autenticación y creación de la sesión
+│   │       ├── logout/       # Cierre de sesión y eliminación de cookies
+│   │       └── upload/       # Procesamiento de imágenes y subida a Supabase
 │   ├── categoria/        # Catch-all de búsqueda y negocios por categoría
 │   ├── compromiso/       # Página estática de compromiso
 │   ├── donde-llega/      # Página de cobertura geográfica
@@ -159,24 +174,65 @@ src/
 │   ├── layout.tsx        # Layout general del sitio (Navbar, Footer, Sticker flotante)
 │   └── page.tsx          # Página de inicio
 ├── components/           # Componentes UI reutilizables
+│   ├── admin/            # Componentes especializados para administración
+│   │   ├── DashboardContainer.tsx  # Vista de administración, listas y formularios CRUD
+│   │   └── ImageUploader.tsx       # Carga de imágenes por arrastre con previsualización
 │   ├── cards/
 │   │   └── CardNegocio.tsx  # Tarjeta brutalista para la visualización de comercios
 │   ├── layout/
 │   │   ├── Footer.tsx       # Pie de página neo-brutalista
 │   │   └── Navbar.tsx       # Barra de navegación superior
 │   ├── BackButton.tsx    # Botón dinámico para volver atrás en el historial
+│   ├── FallbackImage.tsx # Componente de imagen con soporte para imágenes de reemplazo por defecto
 │   └── Search.tsx        # Formulario cliente de búsqueda
 ├── lib/
-│   └── supabase.ts       # Inicialización y exportación del cliente Supabase
+│   ├── supabase.ts       # Inicialización y exportación del cliente Supabase público
+│   └── supabaseAdmin.ts  # Cliente de Supabase administrativo (usa el service role key)
 ├── services/             # Capa de peticiones de datos (Data Fetching)
 │   ├── categorias.ts     # Peticiones sobre categorías
 │   ├── negocios.ts       # Consultas, filtrado y motor de búsqueda de negocios
 │   └── rubros.ts         # Peticiones sobre rubros
-└── types/                # Declaraciones de interfaces TypeScript
-    ├── categoria.ts
-    ├── comercio.ts       # Tipado de negocio/comercio
-    └── rubro.ts
+├── types/                # Declaraciones de interfaces TypeScript
+│   ├── categoria.ts
+│   ├── comercio.ts       # Tipado de negocio/comercio
+│   └── rubro.ts
+└── utils/                # Funciones auxiliares y de soporte
+    └── imageCompression.ts # Compresión de imágenes por canvas del lado del cliente
 ```
+
+---
+
+## 🕷️ Scraper de Importación de Datos (Python)
+
+El proyecto incluye un script scraper independiente en Python para migrar los datos comerciales de `vivichivilcoy.com.ar` hacia la base de datos de Supabase.
+
+*   **Directorio**: `scraper/`
+*   **Funcionalidades**:
+    *   Extracción recursiva de rubros y categorías.
+    *   Procesamiento de listados paginados de comercios.
+    *   Enriquecimiento opcional (visita cada detalle para extraer e-mails, webs, redes sociales, horarios).
+    *   Persistencia local en formato JSON y subida (upsert) a Supabase.
+*   **Instrucciones de Uso**: Consulta el instructivo detallado en [scraper/README.md](file:///c:/Proyectos/clasifk2/scraper/README.md).
+
+---
+
+## 🖼️ Compresión y Optimización de Imágenes
+
+El cargador de imágenes integrado en el Panel de Administración realiza optimización de imágenes en tiempo real:
+*   **Procesamiento**: Utiliza la Canvas API (`src/utils/imageCompression.ts`) antes del envío del archivo.
+*   **Detalles**: Escala la imagen si excede los `1200px` (en ancho o alto) y la comprime a un formato `.jpg` con calidad del `80%`.
+*   **Resultado**: Reduce el consumo de ancho de banda y almacenamiento de Supabase Storage en más de un 80% promedio.
+
+---
+
+## 🗄️ Configuración de Storage en Supabase
+
+Para permitir la carga de portadas y fotos del panel de administración, debes crear tres buckets públicos en la consola de Supabase Storage:
+1.  `rubros`
+2.  `categorias`
+3.  `negocios`
+
+Asegúrate de marcar los buckets como **públicos** para que sus URLs sean accesibles en el frontend sin token. Al utilizar `supabaseAdmin` con la `SUPABASE_SERVICE_ROLE_KEY` en la API, las escrituras omitirán políticas restrictivas de RLS en storage.
 
 ---
 
