@@ -4,8 +4,7 @@ Scraper para vivichivilcoy.com.ar -> Supabase
 Recrea la estructura:
   Rubros      (nivel 1, ej: "Aberturas", "Abogados")
   Categorias  (nivel 2, ej: "Aberturas de Aluminio". Si un rubro no tiene
-               categorias propias, se crea una categoria "general" que
-               apunta a la misma pagina de listado del rubro)
+               categorias propias, sus negocios quedan solo con rubro_id)
   Negocios    (cada card dentro de una pagina de listado, con paginacion)
 
 Uso:
@@ -59,6 +58,7 @@ os.makedirs(OUT_DIR, exist_ok=True)
 RUBROS_JSON = os.path.join(OUT_DIR, "rubros.json")
 CATEGORIAS_JSON = os.path.join(OUT_DIR, "categorias.json")
 NEGOCIOS_JSON = os.path.join(OUT_DIR, "negocios.json")
+SCRAPE_CHECKPOINT_JSON = os.path.join(OUT_DIR, "scrape_checkpoint.json")
 
 REQUEST_DELAY = 0.8          # segundos entre requests, para no bombardear el sitio
 REQUEST_TIMEOUT = 25
@@ -237,13 +237,11 @@ def scrape_rubros_y_categorias():
                 })
         else:
             # Rubro sin categorias propias -> el rubro mismo es la pagina
-            # de listado. Creamos una categoria "placeholder" para poder
-            # mantener la FK categoria_id en Negocios (ya que en el esquema
-            # es un campo obligatorio). Ajustable si preferis dejar
-            # categoria_id nulo en estos casos.
-            cat_ref = f"{rubro_ref}-general"
+            # de listado. Esta fila es solo interna para scrapear negocios;
+            # no se exporta como categoria y deja categoria_id en None.
             categorias.append({
-                "_scrape_id": cat_ref,
+                "_scrape_id": None,
+                "_internal_only": True,
                 "rubro_id": rubro_ref,
                 "nombre": rubro_nombre,
                 "slug": rubro_slug,
@@ -290,7 +288,7 @@ def find_next_page_url(soup: BeautifulSoup, current_url: str, page_num: int):
     return None
 
 
-def parse_negocio_card(section, rubro_id: str, categoria_id: str):
+def parse_negocio_card(section, rubro_id: str, categoria_id: str | None):
     nombre_a = section.select_one("h3 a")
     if not nombre_a:
         return None
@@ -334,7 +332,7 @@ def parse_negocio_card(section, rubro_id: str, categoria_id: str):
     }
 
 
-def scrape_negocios_de_listado(listing_url: str, rubro_id: str, categoria_id: str):
+def scrape_negocios_de_listado(listing_url: str, rubro_id: str, categoria_id: str | None):
     negocios = []
     url = listing_url
     page_num = 1
@@ -423,16 +421,66 @@ def strip_internal_fields(rows: list[dict]) -> list[dict]:
     return [
         {key: value for key, value in row.items() if not key.startswith("_") and key != "id"}
         for row in rows
+        if not row.get("_internal_only")
     ]
 
 
+def save_scrape_checkpoint(
+    rubros: list[dict],
+    categorias: list[dict],
+    all_negocios: list[dict],
+    seen_negocio_ids: set[str],
+    next_categoria_index: int,
+):
+    checkpoint = {
+        "rubros": rubros,
+        "categorias": categorias,
+        "all_negocios": all_negocios,
+        "seen_negocio_ids": sorted(seen_negocio_ids),
+        "next_categoria_index": next_categoria_index,
+    }
+    with open(SCRAPE_CHECKPOINT_JSON, "w", encoding="utf-8") as f:
+        json.dump(checkpoint, f, ensure_ascii=False, indent=2)
+
+    with open(RUBROS_JSON, "w", encoding="utf-8") as f:
+        json.dump(strip_internal_fields(rubros), f, ensure_ascii=False, indent=2)
+    with open(CATEGORIAS_JSON, "w", encoding="utf-8") as f:
+        json.dump(strip_internal_fields(categorias), f, ensure_ascii=False, indent=2)
+    with open(NEGOCIOS_JSON, "w", encoding="utf-8") as f:
+        json.dump(strip_internal_fields(all_negocios), f, ensure_ascii=False, indent=2)
+
+
+def load_scrape_checkpoint():
+    if not os.path.exists(SCRAPE_CHECKPOINT_JSON):
+        return None
+    with open(SCRAPE_CHECKPOINT_JSON, encoding="utf-8") as f:
+        checkpoint = json.load(f)
+    checkpoint["seen_negocio_ids"] = set(checkpoint.get("seen_negocio_ids", []))
+    return checkpoint
+
+
 def run_scrape(enrich: bool = True):
-    rubros, categorias = scrape_rubros_y_categorias()
+    checkpoint = load_scrape_checkpoint()
+    if checkpoint:
+        rubros = checkpoint["rubros"]
+        categorias = checkpoint["categorias"]
+        all_negocios = checkpoint["all_negocios"]
+        seen_negocio_ids = checkpoint["seen_negocio_ids"]
+        start_categoria_index = checkpoint.get("next_categoria_index", 0)
+        log.info(
+            "Retomando checkpoint desde categoria %d/%d con %d negocios acumulados",
+            start_categoria_index + 1,
+            len(categorias),
+            len(all_negocios),
+        )
+    else:
+        rubros, categorias = scrape_rubros_y_categorias()
+        all_negocios = []
+        seen_negocio_ids = set()
+        start_categoria_index = 0
+        save_scrape_checkpoint(rubros, categorias, all_negocios, seen_negocio_ids, start_categoria_index)
 
-    all_negocios = []
-    seen_negocio_ids = set()
-
-    for cat in categorias:
+    for idx, cat in enumerate(categorias[start_categoria_index:], start=start_categoria_index):
         listing_url = cat.pop("_listing_url")
         categoria_ref = cat["_scrape_id"]
         log.info("Categoria '%s' (%s) -> %s", cat["nombre"], categoria_ref, listing_url)
@@ -449,6 +497,11 @@ def run_scrape(enrich: bool = True):
                 continue
             seen_negocio_ids.add(negocio_ref)
             all_negocios.append(neg)
+        
+
+        save_scrape_checkpoint(rubros, categorias, all_negocios, seen_negocio_ids, idx + 1)
+        #print(idx)
+        #break
 
     if enrich:
         log.info("Enriqueciendo %d negocios con datos de la ficha de detalle...", len(all_negocios))
@@ -456,6 +509,7 @@ def run_scrape(enrich: bool = True):
             enrich_negocio_detalle(neg)
             if i % 25 == 0:
                 log.info("  ...%d/%d", i, len(all_negocios))
+                save_scrape_checkpoint(rubros, categorias, all_negocios, seen_negocio_ids, len(categorias))
 
     for neg in all_negocios:
         neg.pop("_detail_url", None)
