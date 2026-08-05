@@ -5,7 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: 'CLASIFK2 Chivilcoy - Guía Comercial',
+  title: 'SEGUNDA MANO Chivilcoy - Guía Comercial',
   description: 'Guía comercial y de servicios de la ciudad de Chivilcoy.',
 };
 

@@ -14,9 +14,13 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <Link 
               href="/"
-              className="font-headline text-2xl md:text-4xl italic font-black text-secondary-fixed tracking-tighter drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:scale-105 transition-transform duration-200 cursor-pointer text-left uppercase"
+              className="hover:scale-105 transition-transform duration-200 cursor-pointer"
             >
-              CLASIFK2
+              <img 
+                src="/imagen1.png" 
+                alt="Segunda Mano" 
+                className="h-12 md:h-20 w-a uto object-contain drop-shadow-[3px_3px_0px_rgba(0,0,0,1)]" 
+              />
             </Link>
           </div>
 

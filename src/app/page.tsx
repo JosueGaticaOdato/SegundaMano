@@ -4,11 +4,18 @@ import Link from 'next/link';
 import Search from '@/components/Search';
 import FallbackImage from '@/components/FallbackImage';
 import { getPaginationRange } from '@/utils/pagination';
+import { Rubro } from '@/types/rubro';
 
 
 export default async function Home({ searchParams }: { searchParams?: Promise<{ page?: string }> }) {
 
-  const rubros = await getRubros();
+  let rubros: Rubro[] = [];
+  try {
+    rubros = await getRubros() || [];
+  } catch (error) {
+    console.error('Error fetching rubros:', error);
+  }
+
   const resolvedSearchParams = await searchParams;
   const currentPage = resolvedSearchParams?.page ? parseInt(resolvedSearchParams.page) : 1;
 
@@ -16,9 +23,7 @@ export default async function Home({ searchParams }: { searchParams?: Promise<{ 
   const totalItems = rubros?.length || 0;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const activePage = Math.max(1, Math.min(currentPage, totalPages || 1));
-  const paginatedRubros = rubros
-    ? rubros.slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage)
-    : [];
+  const paginatedRubros = rubros.slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage);
 
   const getPageHref = (pageNumber: number) => {
     return `/?page=${pageNumber}`;
@@ -70,45 +75,50 @@ export default async function Home({ searchParams }: { searchParams?: Promise<{ 
 
 
         {/* Rubros */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {paginatedRubros && paginatedRubros.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {paginatedRubros.map((rubro) => (
+              <Link
+                key={rubro.id}
+                href={`/rubro/${rubro.slug}`}
+                className="group text-left block bg-white brutal-border brutal-shadow hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 relative overflow-hidden cursor-pointer"
+              >
+                {/* Header */}
+                <header className="h-44 w-full relative border-b-4 border-on-background overflow-hidden">
+                  <FallbackImage
+                      alt={rubro.nombre}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      src={rubro.imagenFondo}
+                  />
+                  <div className="absolute inset-0 bg-primary/50 group-hover:opacity-30 transition-opacity"></div>
+                </header>
 
-          {paginatedRubros?.map((rubro) => (
-            <Link
-              key={rubro.id}
-              href={`/rubro/${rubro.slug}`}
-              className='"group text-left block bg-white brutal-border brutal-shadow hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 relative overflow-hidden cursor-pointer"'
-            >
-              {/* Header */}
-              <header className="h-44 w-full relative border-b-4 border-on-background overflow-hidden">
-                <FallbackImage
-                    alt={rubro.nombre}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    src={rubro.imagenFondo}
-                />
-                <div className="absolute inset-0 bg-primary/50 group-hover:opacity-30 transition-opacity"></div>
-
-                {/* Cantidad de anuncios */}
-                {/* <div className="absolute top-4 right-4 bg-secondary-fixed brutal-border-sm px-2.5 py-1 font-label text-xs text-on-background uppercase font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-                  +{rubro?.totalAnuncios} Anuncios
-                </div> */}
-              </header>
-
-              {/* Card */}
-              <section className="p-6">
-                <h3 className="font-headline text-2xl uppercase text-on-background mb-2 group-hover:text-primary transition-colors font-black">
-                  {rubro.nombre}
-                </h3>
-                <p className="font-sans text-sm text-on-surface-variant mb-4 font-medium leading-relaxed">
-                  {rubro?.descripcion}
-                </p>
-                <div className="flex items-center gap-1 font-label text-xs font-black text-primary group-hover:translate-x-1 transition-transform uppercase">
-                  Ver categorías <ArrowRight className="w-4 h-4 inline" />
-                </div>
-              </section>
-            </Link>
-          ))}
-
-        </div>
+                {/* Card */}
+                <section className="p-6">
+                  <h3 className="font-headline text-2xl uppercase text-on-background mb-2 group-hover:text-primary transition-colors font-black">
+                    {rubro.nombre}
+                  </h3>
+                  <p className="font-sans text-sm text-on-surface-variant mb-4 font-medium leading-relaxed">
+                    {rubro?.descripcion}
+                  </p>
+                  <div className="flex items-center gap-1 font-label text-xs font-black text-primary group-hover:translate-x-1 transition-transform uppercase">
+                    Ver categorías <ArrowRight className="w-4 h-4 inline" />
+                  </div>
+                </section>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="w-full max-w-2xl mx-auto my-8 bg-white border-4 border-on-background p-8 text-center brutal-shadow relative overflow-hidden">
+            <span className="inline-block text-5xl mb-4">🔍</span>
+            <h3 className="font-headline text-2xl md:text-3xl uppercase font-black text-on-background mb-4 tracking-tight">
+              No se encontraron rubros
+            </h3>
+            <p className="font-sans text-base text-on-surface-variant font-semibold mb-6">
+              Lo sentimos, pero en este momento no hay rubros o comercios publicados en el directorio. ¡Vuelve a intentarlo más tarde!
+            </p>
+          </div>
+        )}
 
         {/* Paginación simple adaptada a la estética brutalista */}
         {totalPages > 1 && (
