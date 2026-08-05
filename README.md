@@ -1,4 +1,4 @@
-# CLASIFK2
+# SEGUNDA MANO
 > **"El que busca encuentra"** — Guía comercial, industrial y de servicios para la ciudad de Chivilcoy, pueblos aledaños y zonas de influencia.
 
 Este proyecto es una plataforma web moderna diseñada bajo una estética **Neo-brutalista** robusta, colorida y de alto impacto visual. Permite a los usuarios explorar rubros, categorías y fichas técnicas completas de comercios verificados y destacados, facilitando la conexión directa a través de WhatsApp y otros canales de comunicación.
