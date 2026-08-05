@@ -1,6 +1,8 @@
 # SEGUNDA MANO
 > **"El que busca encuentra"** — Guía comercial, industrial y de servicios para la ciudad de Chivilcoy, pueblos aledaños y zonas de influencia.
 
+**Segunda Mano** cumple la misma función de guía comercial que Clasifk2, pero con la diferencia de que está diseñado para ser **completamente autogestionado**. Esto permite al cliente o administrador cargar y administrar de forma manual sus rubros, categorías y negocios según sus preferencias, sin depender de importaciones automáticas.
+
 Este proyecto es una plataforma web moderna diseñada bajo una estética **Neo-brutalista** robusta, colorida y de alto impacto visual. Permite a los usuarios explorar rubros, categorías y fichas técnicas completas de comercios verificados y destacados, facilitando la conexión directa a través de WhatsApp y otros canales de comunicación.
 
 ---
@@ -30,8 +32,8 @@ Asegúrate de tener instalado en tu sistema:
 
 1.  **Clonar el repositorio**:
     ```bash
-    git clone https://github.com/JosueGaticaOdato/Clasifk2.git
-    cd clasifk2
+    git clone https://github.com/JosueGaticaOdato/SegundaMano.git
+    cd segundamano
     ```
 
 2.  **Instalar las dependencias**:
@@ -137,7 +139,7 @@ El sistema de enrutamiento dinámico define las siguientes secciones:
 *   **`/negocio/[id]`**: Ficha técnica interactiva del negocio. Muestra imágenes (con componente de fallback ante errores de carga), descripción, horarios, dirección y enlaces a redes sociales o sitios web. Incluye un botón de acción principal para **Contactar por WhatsApp** con un texto predefinido personalizado.
 *   **`/admin/login`**: Pantalla de inicio de sesión del Panel de Administración. Requiere la clave de seguridad `ADMIN_PASSWORD`.
 *   **`/admin`**: Panel de control administrativo protegido por sesión (cookie `admin_session`). Contiene una interfaz unificada para la gestión CRUD completa (Agregar, Modificar, Eliminar) de Rubros, Categorías y Negocios, con buscador y filtros.
-*   **`/quienes-somos`**: Sección institucional que describe los valores y el origen de CLASIFK2.
+*   **`/quienes-somos`**: Sección institucional que describe los valores y el origen de Segunda Mano.
 *   **`/revista`**: Información informativa sobre dónde adquirir la edición física y digital de la revista comercial.
 *   **`/donde-llega`**: Mapa e información de cobertura publicitaria (abarcando Chivilcoy, Alberti, Mercedes, Suipacha, Luján, Bragado, Chacabuco, CABA y Costa Atlántica).
 *   **`/compromiso`**: Declaración de compromisos éticos con los lectores y anunciantes de la guía.
@@ -202,17 +204,15 @@ src/
 
 ---
 
-## 🕷️ Scraper de Importación de Datos (Python)
+## ✍️ Carga y Gestión Manual de Datos
 
-El proyecto incluye un script scraper independiente en Python para migrar los datos comerciales de `vivichivilcoy.com.ar` hacia la base de datos de Supabase.
+A diferencia de versiones anteriores que dependían de scrapers o importaciones automáticas, **Segunda Mano** está diseñado para ser completamente autogestionado por el administrador o cliente a través de una interfaz de control web intuitiva.
 
-*   **Directorio**: `scraper/`
-*   **Funcionalidades**:
-    *   Extracción recursiva de rubros y categorías.
-    *   Procesamiento de listados paginados de comercios.
-    *   Enriquecimiento opcional (visita cada detalle para extraer e-mails, webs, redes sociales, horarios).
-    *   Persistencia local en formato JSON y subida (upsert) a Supabase.
-*   **Instrucciones de Uso**: Consulta el instructivo detallado en [scraper/README.md](file:///c:/Proyectos/clasifk2/scraper/README.md).
+El flujo de administración funciona de la siguiente manera:
+1. **Acceso Seguro**: El administrador inicia sesión mediante la ruta `/admin/login` con la contraseña configurada en la variable de entorno `ADMIN_PASSWORD`.
+2. **Carga de Rubros**: Se definen los sectores generales de la guía (ej. Gastronomía, Servicios, Salud) especificando su nombre, slug y una imagen de fondo ilustrativa.
+3. **Gestión de Categorías**: Se asocian categorías específicas a cada rubro (por ejemplo, agregar la categoría "Pizzerías" dentro del rubro "Gastronomía") para estructurar el contenido.
+4. **Carga de Negocios**: Se registran las fichas técnicas detalladas de los comercios pertenecientes a cada categoría, con sus datos de contacto, horarios, redes sociales y fotografías.
 
 ---
 
