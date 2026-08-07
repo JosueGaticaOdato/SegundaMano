@@ -1357,15 +1357,6 @@
             "desc": "Fiambrería.",
             "price": "$$",
             "verified": false
-          },
-          {
-            "id": 1776216260410,
-            "name": "los robles de bragado",
-            "dir": "Rosas535",
-            "tel": "1156938572",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       },
@@ -2513,24 +2504,6 @@
             "desc": "Verdulería.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776132801204,
-            "name": "el verdu de bragado",
-            "dir": "Necochea930",
-            "tel": "2342463974 ",
-            "img": "",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1776159965678,
-            "name": "mati y Nicolas de bragado",
-            "dir": "12octubre y suarez",
-            "tel": "2342461487",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       },
@@ -3222,13 +3195,12 @@
             "verified": true
           },
           {
-            "id": 1776330723914,
             "name": "buenas migas. de. bragado",
-            "dir": "Busto523",
+            "dir": "Del busto523",
             "tel": "2342482594",
             "img": "",
-            "desc": "",
-            "verified": true
+            "verified": true,
+            "desc": ""
           }
         ]
       },
@@ -3396,15 +3368,6 @@
             "tel": "15522556",
             "desc": "Pizzería.",
             "price": "$$",
-            "verified": true
-          },
-          {
-            "id": 1776245713192,
-            "name": "los 3 hermanos. de bragado",
-            "dir": "Rosas315",
-            "tel": "2342563870",
-            "img": "",
-            "desc": "",
             "verified": true
           }
         ]
@@ -4502,38 +4465,6 @@
             "verified": true
           }
         ]
-      },
-      "despensa": {
-        "img": "https://i.ibb.co/j9rDkm92/1776499616731.png",
-        "shops": [
-          {
-            "id": 1776161036328,
-            "name": "fulltime bragado",
-            "dir": "Carlos casares55",
-            "tel": "2342402287",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "FRUTAS SECAS": {
-        "img": "https://i.ibb.co/B2gTC1DG/1777200840056.png",
-        "shops": []
-      },
-      "frutas secas": {
-        "img": "https://i.ibb.co/r2b2vnKR/1776499868351.png",
-        "shops": [
-          {
-            "id": 1776328693706,
-            "name": "José alvarez, de bragado",
-            "dir": "Bragado",
-            "tel": "2342531529",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
       }
     }
   },
@@ -5052,18 +4983,11 @@
             "id": 33244252311,
             "name": "Kevingston House",
             "dir": "Pellegrini 185",
-            "tel": "1154690097",
+            "tel": "02346-427937",
             "img": "https://vivichivilcoy.com.ar/media/cache/small/custom/domain_1/image_files/sitemgr_photo_2581.jpg",
             "desc": "",
             "price": "$",
-            "verified": true,
-            "social": {
-              "instagram": "https://www.instagram.com/kevingstonok?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-              "facebook": "https://www.facebook.com/profile.php?id=100044358888383&locale=es_LA",
-              "tiktok": "https://www.tiktok.com/tag/kevingston?is_from_webapp=1&sender_device=pc",
-              "web": "https://www.kevingston.com/?gad_source=1&gad_campaignid=18448775910&gclid=Cj0KCQjwkrzPBhCqARIsAJN460nMF_N7mXErzzPibli8x5MNpihlBqp7dY73xq93PPwc806ykqAUPSwaArVtEALw_wcB",
-              "maps": "www.bing.com/maps/search?v=2&pc=FACEBK&mid=8100&mkt=es-ES&fbclid=IwY2xjawQURgRleHRuA2FlbQIxMABicmlkETFWMFc2ZElwUzk1VkpZQ3Nmc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjLbdktg5U3TXtd3wnTFVu4MiqySIEg153E9u3tNX00GSGLOpy3UPLUzlowd_aem_Orf3hGYu0Ce9-NcdlWjziQ&FORM=FBKPL1&q=av+españa+y+esq.+2+de+abril+%2C+General+Rodríguez%2C+Argentina%2C+1748&cp=-34.914691~-57.787411&lvl=11&style=r"
-            }
+            "verified": true
           },
           {
             "id": 463535322545233,
@@ -5360,15 +5284,6 @@
             "desc": "Lavandería.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776247386193,
-            "name": "lavaya",
-            "dir": "Luz",
-            "tel": "2342467415",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       },
@@ -5662,19 +5577,6 @@
             "desc": "Talabartería.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776076650026,
-            "name": "REGIONALES BRAGADO",
-            "dir": "Rivadavia2875",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": true,
-            "social": {
-              "instagram": "Regionales bragado",
-              "facebook": "Regionalesbragado"
-            }
           }
         ]
       },
@@ -5870,15 +5772,6 @@
             "desc": "Zapatos clásicos y de vestir.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776247644578,
-            "name": "zapa x de bragado",
-            "dir": "Pellegrini2188",
-            "tel": "2342461863",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       }
@@ -5984,16 +5877,11 @@
             "id": 2534234314,
             "name": "Quijote Amoblamientos",
             "dir": "Alvear 76",
-            "tel": "2346 610078",
+            "tel": "02346-15610078",
             "img": "https://vivichivilcoy.com.ar/media/cache/small/custom/domain_1/image_files/sitemgr_photo_3411.jpg",
-            "desc": "50 años de trayectoria: Venta de Muebles, Colchones & Sommiers, Almohadas, Deco y Blanqueria.",
+            "desc": "",
             "price": "$",
-            "verified": true,
-            "social": {
-              "instagram": "https://www.instagram.com/muebleriaquijote?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-              "facebook": "https://www.facebook.com/QuijoteMueblesJuan?locale=es_LA",
-              "maps": "https://www.bing.com/maps/search?v=2&pc=FACEBK&mid=8100&mkt=es-ES&fbclid=IwY2xjawQURI1leHRuA2FlbQIxMABicmlkETFWMFc2ZElwUzk1VkpZQ3Nmc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHgMlznxqUCfKBilKim_LI10MfAhLTO4Jb2XT5gFTFBmGTtOWSqj5eVXwW0ve_aem_l6M04yR0C7lDGjozC5hn3A&FORM=FBKPL1&q=Alvear+76%2C+Chivilcoy%2C+Argentina%2C+6620&cp=-34.896431~-60.016086&lvl=16&style=r"
-            }
+            "verified": true
           },
           {
             "id": 22145214317,
@@ -6129,15 +6017,6 @@
             "desc": "Amoblamientos.",
             "price": "$$",
             "verified": false
-          },
-          {
-            "id": 1776079282270,
-            "name": "los griegos. de bragado",
-            "dir": "",
-            "tel": "2342485731",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       },
@@ -6223,6 +6102,18 @@
             "desc": "Instalación profesional de equipos de aire.",
             "price": "$$",
             "verified": false
+          },
+          {
+            "name": "ro",
+            "dir": "21332",
+            "tel": "2213633355",
+            "img": "https://i.ibb.co/vvZP2xXg/Clsifik2-Detras.png",
+            "verified": true,
+            "desc": "ewqerewre",
+            "social": {
+              "instagram": "https://www.instagram.com/petlinary?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+              "facebook": "https://www.instagram.com/petlinary?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            }
           }
         ]
       },
@@ -7049,15 +6940,6 @@
             "desc": "Colocación de membranas.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776078997957,
-            "name": "multiservix",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false
           }
         ]
       },
@@ -7436,20 +7318,6 @@
             "tel": "1559784888",
             "desc": "Pulido de pisos.",
             "price": "$$",
-            "verified": true
-          }
-        ]
-      },
-      "REGALERIA": {
-        "img": "https://i.ibb.co/4wPMFjV5/1777199942733.png",
-        "shops": [
-          {
-            "id": 1776245116745,
-            "name": "todo import de bragado",
-            "dir": "Pellegrini2186",
-            "tel": "2342461863",
-            "img": "",
-            "desc": "",
             "verified": true
           }
         ]
@@ -8801,15 +8669,6 @@
             "desc": "",
             "price": "$$",
             "verified": false
-          },
-          {
-            "id": 1776246860897,
-            "name": "etchehun de bragado",
-            "dir": "Laprida275",
-            "tel": "2342403745",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       },
@@ -9509,15 +9368,6 @@
             "img": "",
             "desc": "Proyectos y construcciones.",
             "price": "$$",
-            "verified": false
-          },
-          {
-            "id": 1776327588253,
-            "name": "multiservyx",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
             "verified": false
           }
         ]
@@ -10939,7 +10789,7 @@
             "id": 441324543623234500000,
             "name": "Cerrajería Warts",
             "dir": "Avenida 22 de Octubre 467",
-            "tel": "2346459783",
+            "tel": "02346-15459783",
             "img": "https://vivichivilcoy.com.ar/media/cache/small/custom/domain_1/image_files/sitemgr_photo_3045.jpg",
             "desc": "",
             "price": "$",
@@ -10949,7 +10799,7 @@
             "id": 44123242312,
             "name": "Cerrajería López",
             "dir": "Chivilcoy, Buenos Aires",
-            "tel": "02346-484525",
+            "tel": "02346-15484525",
             "img": "https://vivichivilcoy.com.ar/media/cache/small/custom/domain_1/image_files/sitemgr_photo_3285.jpg",
             "desc": "",
             "price": "$",
@@ -10959,7 +10809,7 @@
             "id": 44335465432532330000,
             "name": "Memo",
             "dir": "Chivilcoy, Buenos Aires",
-            "tel": "2346428140",
+            "tel": "02346-428140",
             "img": "https://vivichivilcoy.com.ar/media/cache/small/custom/domain_1/image_files/sitemgr_photo_3522.jpg",
             "desc": "",
             "price": "$",
@@ -10993,15 +10843,6 @@
             "img": "",
             "desc": "Cerrajería.",
             "price": "$$",
-            "verified": true
-          },
-          {
-            "id": 1776077444581,
-            "name": "boaron bragado",
-            "dir": "",
-            "tel": "2342567985",
-            "img": "",
-            "desc": "",
             "verified": true
           }
         ]
@@ -11253,15 +11094,6 @@
             "desc": "Transporte.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776327727972,
-            "name": "mito",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false
           }
         ]
       },
@@ -12381,15 +12213,6 @@
             "img": "",
             "desc": "Fletes.",
             "price": "$$",
-            "verified": false
-          },
-          {
-            "id": 1776326237023,
-            "name": "mito",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
             "verified": false
           }
         ]
@@ -13658,15 +13481,6 @@
             "desc": "Relojería.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776323742429,
-            "name": "rp de bragado",
-            "dir": "Rivadavia794",
-            "tel": "2346558622",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       },
@@ -13689,15 +13503,6 @@
             "tel": "15692010",
             "desc": "Juguetes y regalos.",
             "price": "$$",
-            "verified": true
-          },
-          {
-            "id": 1776326687629,
-            "name": "colorete de bragado",
-            "dir": "Urquiza714",
-            "tel": "U ",
-            "img": "",
-            "desc": "",
             "verified": true
           }
         ]
@@ -14564,15 +14369,6 @@
             "tel": "453207",
             "desc": "Atención podológica especializada.",
             "price": "$$$",
-            "verified": true
-          },
-          {
-            "id": 1776326335028,
-            "name": "santillan de bragado",
-            "dir": "Remedios de. Escalada 2363",
-            "tel": "2342400487",
-            "img": "",
-            "desc": "",
             "verified": true
           }
         ]
@@ -16028,15 +15824,6 @@
             "desc": "",
             "price": "$$",
             "verified": false
-          },
-          {
-            "id": 1776078737645,
-            "name": "elasticos bragado",
-            "dir": "Elizondo3889",
-            "tel": "2342485835",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       },
@@ -16432,15 +16219,6 @@
             "desc": "",
             "price": "$$",
             "verified": false
-          },
-          {
-            "id": 1776328189476,
-            "name": "el áre de bragado",
-            "dir": "Tranque lauquen252",
-            "tel": "2342408673",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       },
@@ -17116,15 +16894,6 @@
             "desc": "",
             "price": "$$",
             "verified": false
-          },
-          {
-            "id": 1776077840606,
-            "name": "los 5hermanos de bragado",
-            "dir": "Misiones y necochea",
-            "tel": "2342411105",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       },
@@ -18663,15 +18432,6 @@
             "desc": "Servicio mecánico.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776327895668,
-            "name": "Lb de bragado",
-            "dir": "Rosas735",
-            "tel": "2342508135",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       },
@@ -19181,94 +18941,6 @@
             "verified": true
           }
         ]
-      },
-      "ELASTICOS": {
-        "img": "https://i.ibb.co/CpCHYRbw/s-b-18-04-2026-05-28-47.png",
-        "shops": [
-          {
-            "id": 1776158217881,
-            "name": "elasticos BRAGADO",
-            "dir": "Elizondo3889",
-            "tel": "2342485835",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "inyección electronica": {
-        "img": "https://i.ibb.co/pBJMx0JP/1776501649577.png",
-        "shops": [
-          {
-            "id": 1776159760672,
-            "name": "el colo de bragado",
-            "dir": "Pellegrink1059",
-            "tel": "2342454868",
-            "img": "",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1776325188255,
-            "name": "bragus de bragado",
-            "dir": "Bragado",
-            "tel": "2342530801",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "RADIADORES": {
-        "img": "https://i.ibb.co/W4Z9N780/s-b-18-04-2026-05-37-18.png",
-        "shops": [
-          {
-            "id": 1776160278182,
-            "name": "villalba bragado",
-            "dir": "Maroni12",
-            "tel": "2342427908",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "acumuladores": {
-        "img": "https://i.ibb.co/wZS4s0wV/s-b-18-04-2026-05-42-49.png",
-        "shops": [
-          {
-            "id": 1776160832504,
-            "name": "nestor bragado",
-            "dir": "Dardo rocha 270",
-            "tel": "2342455076",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "comisiones y fletes": {
-        "img": "https://i.ibb.co/yFnT9KCw/1776501298952.png",
-        "shops": [
-          {
-            "id": 1776324928185,
-            "name": "mito",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1776324966495,
-            "name": "narvaiz bragado",
-            "dir": "Elizondo2536",
-            "tel": "2342555069",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
       }
     }
   },
@@ -19282,8 +18954,8 @@
             "id": 2401,
             "name": "JUANCORENA, EZEQUEL G.",
             "dir": "PRESBITERO SACARDI Y C. 100",
-            "tel": "2346423844",
-            "img": "https://i.ibb.co/WNHP0m2x/Screenshot-20260304-090003.png",
+            "tel": "423844",
+            "img": "",
             "desc": "Análisis y desarrollo de sistemas informáticos.",
             "price": "$$",
             "verified": false
@@ -19402,15 +19074,6 @@
             "desc": "Accesorios.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776329080556,
-            "name": "miceli bragado",
-            "dir": "Rivadavia1811",
-            "tel": "2344600572",
-            "img": "",
-            "desc": "",
-            "verified": false
           }
         ]
       },
@@ -19676,15 +19339,6 @@
             "desc": "Diseño gráfico.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776328970143,
-            "name": "segundamano diseño grafico",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false
           }
         ]
       },
@@ -19749,15 +19403,6 @@
             "img": "",
             "desc": "Impresiones.",
             "price": "$$",
-            "verified": false
-          },
-          {
-            "id": 1776328826428,
-            "name": "segunda mano",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
             "verified": false
           }
         ]
@@ -19827,15 +19472,6 @@
             "desc": "Marketing online y branding.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776328855999,
-            "name": "segundamano",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false
           }
         ]
       },
@@ -19887,15 +19523,6 @@
             "desc": "Plotter y escaneo de planos.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776328911734,
-            "name": "segundamano publicidad",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false
           }
         ]
       },
@@ -19932,52 +19559,6 @@
             "tel": "15433789",
             "desc": "Reparaciones electromecánicas.",
             "price": "$$",
-            "verified": true
-          }
-        ]
-      },
-      "CONTROL REMOTO": {
-        "img": "",
-        "shops": [
-          {
-            "id": 1776158548994,
-            "name": "venta y reparacion BRAGADO",
-            "dir": "Pellegrini2186",
-            "tel": "2342461863",
-            "img": "",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1776244313857,
-            "name": "bragado",
-            "dir": "Pelegrini2186",
-            "tel": "2342461863",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "cámaras de seguridad": {
-        "img": "",
-        "shops": [
-          {
-            "id": 1776215916265,
-            "name": "ezviz",
-            "dir": "",
-            "tel": "2342461446",
-            "img": "",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1776324203812,
-            "name": "switch",
-            "dir": "Elizondo2382",
-            "tel": "2342430517",
-            "img": "",
-            "desc": "",
             "verified": true
           }
         ]
@@ -21800,10 +21381,13 @@
             "name": "GIORELLO, ROSANA",
             "dir": "S/D",
             "tel": "430814",
-            "img": "",
+            "img": "https://i.ibb.co/zW6SVKwT/etiqueta-v1-RGB-1-pages-to-jpg-0006.jpg",
             "desc": "prueba",
             "price": "$$",
-            "verified": false
+            "verified": false,
+            "social": {
+              "instagram": "https://www.instagram.com/petlinary?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            }
           },
           {
             "id": 209,
@@ -23816,37 +23400,6 @@
             "verified": true
           }
         ]
-      },
-      "gym": {
-        "img": "",
-        "shops": [
-          {
-            "id": 1776244539654,
-            "name": "powerbest de bragado",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false,
-            "social": {
-              "instagram": "Powerbeast_program"
-            }
-          }
-        ]
-      },
-      "perfumes": {
-        "img": "",
-        "shops": [
-          {
-            "id": 1776246567031,
-            "name": "ng perfumes. árabes. de bragado",
-            "dir": "Pellegrink2136",
-            "tel": "2342404322",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
       }
     }
   },
@@ -24940,7 +24493,7 @@
         ]
       },
       "Pinturerias": {
-        "img": "https://i.ibb.co/xSC9hVVd/dom-26-04-2026-22-47-43.png",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYIf11nXbs4rAIBMMi4fg3fBVAuIZSXkbaHQ&s",
         "shops": [
           {
             "id": 41423,
@@ -25030,70 +24583,6 @@
             "tel": "15686739",
             "desc": "Pinturería.",
             "price": "$$",
-            "verified": true
-          },
-          {
-            "id": 1776245342177,
-            "name": "juanchy",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1776245409835,
-            "name": "tecnipint bragado",
-            "dir": "Belgrano y argentinos",
-            "tel": "234430962",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "membranas": {
-        "img": "https://i.ibb.co/Ngyjj7N8/dom-26-04-2026-23-00-08.png",
-        "shops": [
-          {
-            "id": 1776160548212,
-            "name": "bragado",
-            "dir": " Elizondo23427",
-            "tel": "2342450282",
-            "img": "",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1776324395773,
-            "name": "malafoy bragado",
-            "dir": "Elizondo2342",
-            "tel": "2214350606",
-            "img": "",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1777255433362,
-            "name": "MULTISERVYX",
-            "dir": "Dorrego 35",
-            "tel": "2346 46 2346",
-            "img": "https://i.ibb.co/Ngyjj7N8/dom-26-04-2026-23-00-08.png",
-            "desc": "Mantenimiento edilicio\nColocación reparación y cambio de membranas en techo. De chapa y loza",
-            "verified": true
-          }
-        ]
-      },
-      "inmobiliarias": {
-        "img": "https://i.ibb.co/C5Ww0qFr/1777106894760.png",
-        "shops": [
-          {
-            "id": 1776244745126,
-            "name": "aznar de bragado",
-            "dir": "Rivadavia1172 ",
-            "tel": "2342422206",
-            "img": "",
-            "desc": "",
             "verified": true
           }
         ]
@@ -26134,20 +25623,11 @@
             "desc": "Librería.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776132344305,
-            "name": "papelera  Fernández bragado",
-            "dir": "Balcarce y 12 octubre",
-            "tel": "2342421261",
-            "img": "",
-            "desc": "",
-            "verified": true
           }
         ]
       },
       "Venta de Libros Usados": {
-        "img": "https://i.ibb.co/tw4H9sMJ/Foto-Grid-20260303-170529771.jpg",
+        "img": "https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&w=800",
         "shops": [
           {
             "id": 730000,
@@ -26162,11 +25642,10 @@
             "id": 740000,
             "name": "PERDOMENICO, OMAR",
             "dir": "Bolivar 383",
-            "tel": "2346462346",
+            "tel": "011-1535130130",
             "desc": "Venta de libros usados.",
             "price": "$$",
-            "verified": true,
-            "img": "https://i.ibb.co/W4kNbH4v/Retouch-20260301-151635151.png"
+            "verified": true
           }
         ]
       },
@@ -26190,15 +25669,6 @@
             "desc": "Marketing online y branding.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776132221905,
-            "name": "segundamano publicidad",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false
           }
         ]
       },
@@ -26273,15 +25743,6 @@
             "desc": "Plotter y escaneo de planos.",
             "price": "$$",
             "verified": true
-          },
-          {
-            "id": 1776132273477,
-            "name": "segundamano grafica",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false
           }
         ]
       },
@@ -26304,34 +25765,6 @@
             "tel": "423118",
             "desc": "Espectáculos y obras teatrales.",
             "price": "$$",
-            "verified": true
-          }
-        ]
-      },
-      "libreria artistica": {
-        "img": "",
-        "shops": [
-          {
-            "id": 1776158924807,
-            "name": "m&g BRAGADO",
-            "dir": "Pellegrini1633",
-            "tel": "2342408043",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "golf": {
-        "img": "",
-        "shops": [
-          {
-            "id": 1776247098472,
-            "name": "bragado golf club",
-            "dir": "Profesor rivera",
-            "tel": "2236973524",
-            "img": "",
-            "desc": "",
             "verified": true
           }
         ]
@@ -27979,1664 +27412,44 @@
       "Distribuidores mayoristas": {
         "shops": [
           {
-            "id": 41483423420,
             "name": "yamile",
             "dir": "Pasteur 131",
             "tel": "1150628422",
-            "img": "https://i.ibb.co/LD9G3pPg/Foto-Grid-20260227-070338807.jpg"
-          },
-          {
-            "id": 41324342480,
-            "name": "carpinchadavelix",
-            "dir": "Bolivar 383",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/fz0RJsD5/Foto-Grid-20260305-083152374.jpg",
-            "verified": true,
-            "desc": "Ventas mayorista libros y revistas nac e importadas envios 24/7"
-          },
-          {
-            "id": 1773681405390,
-            "name": "bella",
-            "dir": "",
-            "tel": "",
-            "img": "",
+            "img": "https://i.ibb.co/LD9G3pPg/Foto-Grid-20260227-070338807.jpg",
             "desc": "",
-            "verified": false
-          }
-        ],
-        "img": "https://i.ibb.co/qL6RSXM7/Foto-Grid-20260303-154545597.jpg"
-      },
-      "IMPORTADORES": {
-        "shops": [
-          {
-            "id": 41483424320,
-            "name": "mito",
-            "dir": "Boulognesurmer259",
-            "tel": "1150628422",
-            "img": "https://i.ibb.co/Vc8vzrVS/Foto-Grid-20260303-162728351.jpg",
-            "verified": false,
-            "desc": "Importador de mochilas"
+            "verified": true
           }
         ],
         "img": "https://i.ibb.co/jXRLnnN/Foto-Grid-20260228-065934668.jpg"
       },
+      "IMPORTADORES": {
+        "shops": []
+      },
       "FABRICANTES": {
-        "shops": [
-          {
-            "id": 41482344324320,
-            "name": "MITO",
-            "dir": "Boulognesurmer259",
-            "tel": "1150628422",
-            "img": "https://i.ibb.co/4wxY1nm6/Foto-Grid-20260303-162728351.jpg",
-            "verified": true,
-            "desc": "Importador. De mochilas"
-          },
-          {
-            "id": 41432443243280,
-            "name": "CHAPAS NUMERICAS DOMICILIARIAS",
-            "dir": "Dorrego35chivilcoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/h1J1BTHk/Foto-Grid-20260305-085349640.jpg",
-            "verified": true,
-            "desc": "Números corpóreos\nChapas NUMERICAS domicliarias"
-          },
-          {
-            "id": 41432432480,
-            "name": "CHAPAS VINTAGE",
-            "dir": "Bolivar 383chivilcoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/xK2kXHsK/Foto-Grid-20260305-085106982.jpg",
-            "verified": true,
-            "desc": "Chapas vintage\nCartelería antiguas \npublicidades famosas"
-          },
-          {
-            "id": 423443321480,
-            "name": "EL ROMPEHUESOS",
-            "dir": "Dorrego35chivilcoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/HDd6d2TK/Foto-Grid-20260305-084808701.jpg",
-            "verified": true,
-            "desc": "Fabrica de pelotas. De fútbol n5\nREPARACIONES\nPelotas personalizadas"
-          },
-          {
-            "id": 1773430521101,
-            "name": "RISING",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/3yM0Q4L9/IMG-20260313-WA0101.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1774387826756,
-            "name": "flyer banners",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false
-          }
-        ],
-        "img": "https://i.ibb.co/PGt1xHSB/Foto-Grid-20260303-154641234.jpg"
-      },
-      "DISTRIBUIDORES JUGUETEROS Y LIBREROS": {
-        "img": "https://i.ibb.co/PvMfwpL5/Foto-Grid-20260303-154931994.jpg",
-        "shops": [
-          {
-            "id": 4144324343280,
-            "name": "distribuidor  mito yamile",
-            "dir": "Noulognesurmer 279",
-            "tel": "1150628422",
-            "img": "https://i.ibb.co/gFyhJbYd/Foto-Grid-20260305-091211505.jpg",
-            "verified": true,
-            "desc": "Art de temporada juguetes y escolares"
-          },
-          {
-            "id": 41443243280,
-            "name": "carpinchadavelix",
-            "dir": "Bolivar 383chivilfoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/sdGytjZg/Foto-Grid-20260305-082210238.jpg",
-            "verified": false,
-            "desc": "Venta x mayor. De libros y revistas nac e imp"
-          },
-          {
-            "name": "liuboss",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/Xk8mgJrM/Foto-Grid-20260306-213931924.jpg",
-            "verified": false,
-            "desc": ""
-          },
-          {
-            "name": "multyonce",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/DDFCWr73/Foto-Grid-20260306-214132258.jpg",
-            "verified": false,
-            "desc": ""
-          },
-          {
-            "name": "liuboss",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/Xk8mgJrM/Foto-Grid-20260306-213931924.jpg",
-            "verified": false,
-            "desc": ""
-          },
-          {
-            "id": 1772989728028,
-            "name": "jireh",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/1YPBPy4X/Foto-Grid-20260306-223755398.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773351363688,
-            "name": "nicole",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/FbFxbJC6/1773351219392.png",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773351509284,
-            "name": "lumed",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/4R3dYsdK/1773351088290.png",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773351669836,
-            "name": "agustin",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/6RgMHD3j/1773350913223.png",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773611273767,
-            "name": "maty x mayor",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/r2DCJ341/Foto-Grid-20260315-183805051.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773611301991,
-            "name": "la gran mitre",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/jZ3RZW0V/Foto-Grid-20260315-183546617.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773611348250,
-            "name": "fsMyhouse",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/F4cxN5zH/Foto-Grid-20260315-183622074.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773611417764,
-            "name": "ts",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/N6Xfw9bV/Foto-Grid-20260315-183151508.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773611478478,
-            "name": "naty",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/ns7HyLSc/Foto-Grid-20260315-183707239.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773611524514,
-            "name": "3ardillas",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/LdY0prPH/Foto-Grid-20260315-184011988.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773611580356,
-            "name": "angela",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/bgwR6FV5/IMG-20260315-WA0083.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773611648050,
-            "name": "nuevo mitre",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/CK4Xv7kQ/Foto-Grid-20260315-183851141.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773611701351,
-            "name": "angie",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/3mRzP1RD/Foto-Grid-20260315-183234787.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773611797724,
-            "name": "a",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/PZJ9p4pX/IMG-20260315-WA0080.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773611866260,
-            "name": "el. arca. de. noe",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/mrZ78cfc/IMG-20260315-WA0085.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1774800296802,
-            "name": "carteleria",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "DISTRIBUIDORES MAYORISTAS DE BAZAR Y REGALERIA": {
-        "img": "https://i.ibb.co/qLJjCCV9/mi-4-03-2026-13-48-25.png",
-        "shops": [
-          {
-            "id": 4324324323435,
-            "name": "yamile",
-            "dir": "Boulognesurmer259",
-            "tel": "1150628422",
-            "img": "https://i.ibb.co/Fb0sLgc1/Foto-Grid-20260303-143720981.jpg",
-            "verified": true,
-            "desc": "Supermercado del regalo"
-          },
-          {
-            "name": "donregalon",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/20CtGpMg/Foto-Grid-20260306-220344023.jpg",
-            "verified": false,
-            "desc": ""
-          },
-          {
-            "id": 1772988189804,
-            "name": "multionce",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/mrmB1xZr/Foto-Grid-20260306-214132258.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773429463907,
-            "name": "los primos",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/MxpSrqg6/IMG-20260313-WA0099.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773611932754,
-            "name": "ámbar. akemi",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/CsbHdp0P/IMG-20260315-WA0096.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773655891814,
-            "name": "estrella de belen",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/spNQP04h/IMG-20260316-WA0012.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773655922988,
-            "name": "luis",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/LzDx9Dh9/IMG-20260315-WA0079.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773655963660,
-            "name": "la moda",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/rK7JWBvs/IMG-20260316-WA0008.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773681320213,
-            "name": "babaji",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/kspnmrMP/IMG-20260315-WA0074.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773681435601,
-            "name": "bella",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/6RjyHfPh/Foto-Grid-20260315-182826324.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "VENTA MAYORISTA TALABARTERIA mates termos y boinas": {
-        "img": "https://i.ibb.co/wFZzyf2p/Foto-Grid-20260304-072419103.jpg",
-        "shops": [
-          {
-            "id": 41454353454380,
-            "name": "mito yamile",
-            "dir": "Pasteurs131",
-            "tel": "1150628422",
-            "img": "https://i.ibb.co/WNz2yJGn/Foto-Grid-20260304-163747439.jpg",
-            "verified": true,
-            "desc": "Venta de mates y termos"
-          },
-          {
-            "id": 1773399652946,
-            "name": "rg",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/G42PcNR2/1773395641259.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "importadores de tecnología y accesorios de celulares": {
-        "img": "https://i.ibb.co/3YdSK663/Foto-Grid-20260303-220951060.jpg",
-        "shops": [
-          {
-            "id": 41423443253480,
-            "name": "mito yamile",
-            "dir": "Pateurs 131",
-            "tel": "1150628422",
-            "img": "https://i.ibb.co/93NSQQ21/Foto-Grid-20260220-074404269.jpg",
-            "verified": true,
-            "desc": "Accesorios  de celulares"
-          },
-          {
-            "id": 415436356634480,
-            "name": "multiservix",
-            "dir": "Dorrego35chivilcoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/tTfg7QSt/Foto-Grid-20260305-134301038.jpg",
-            "verified": true,
-            "desc": "Venta x mercado libre\nMantenimiento pág web\nVentas on linea\nMarketing digital"
-          },
-          {
-            "id": 432445431480,
-            "name": "Publiweb",
-            "dir": "Bolivar 383chivilcoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/vx2PTfNJ/Foto-Grid-20260216-090144233.jpg",
-            "verified": true,
-            "desc": "Creación pág web\nMarketing digital\nPublicidad en redes"
-          },
-          {
-            "id": 41446543480,
-            "name": "Guiaweb",
-            "dir": "Bolivar 383chuvilcoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/5gxT0gJw/lun-16-02-2026-05-48-42.png",
-            "verified": true,
-            "desc": "Creación pág web\nMarketing digital\nPublicidad. En redes"
-          },
-          {
-            "id": 41243222480,
-            "name": "Clipdigital",
-            "dir": "Bolivar 383",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/Kjj4GfZ2/Foto-Grid-20260305-153913796.jpg",
-            "verified": true,
-            "desc": "Creación pág web"
-          },
-          {
-            "id": 41489879870,
-            "name": "Digitalguia",
-            "dir": "Bolivar 383",
-            "tel": "234462346",
-            "img": "https://i.ibb.co/ym9dBrMx/Foto-Grid-20260305-153806274.jpg",
-            "verified": true,
-            "desc": "Creación pág web"
-          },
-          {
-            "id": 414867867450,
-            "name": "creaciones web",
-            "dir": "Bolivar 383",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/vx2PTfNJ/Foto-Grid-20260216-090144233.jpg",
-            "verified": true,
-            "desc": "Publicidad e redes"
-          },
-          {
-            "name": "zurita",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/W4NGTfP6/vie-6-03-2026-21-31-47.png",
-            "verified": true,
-            "desc": ""
-          },
-          {
-            "id": 1772989900724,
-            "name": "tiva",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/RGdcG1qR/Foto-Grid-20260306-224506098.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1772992233175,
-            "name": "TECNOMAS",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/pBHL1zrL/Foto-Grid-20260306-221739097.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1772992929556,
-            "name": "satex",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/Swp62j55/Foto-Grid-20260306-222827771.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773400583130,
-            "name": "mashaallaa",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/B0W90Kq/1773396393976.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773400683434,
-            "name": "arisha",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/cSQQhZPz/1773396330121.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773400990668,
-            "name": "shoel",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/TBYXb664/1773396244113.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773401081195,
-            "name": "fakycell",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/1Y96MmRd/IMG-20260313-WA0050.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773404218244,
-            "name": "santycell",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/tMZ3Vc1R/IMG-20260313-WA0051.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773404276757,
-            "name": "azracell",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/MkfnGtKq/IMG-20260313-WA0052.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773404309014,
-            "name": "top",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/5Hm504y/IMG-20260313-WA0053.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773429973586,
-            "name": "el primo",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/N6NQvnzY/IMG-20260313-WA0099.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773497491511,
-            "name": "mc",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/JFjBPytc/IMG-20260314-WA0016.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "fabricantes e importadores de indumentaria": {
-        "img": "https://i.ibb.co/C3qxgqY6/Foto-Grid-20260303-231201456.jpg",
-        "shops": [
-          {
-            "id": 414802343543,
-            "name": "mito yamile",
-            "dir": "Pasteur131",
-            "tel": "1150628422",
-            "img": "https://i.ibb.co/93NSQQ21/Foto-Grid-20260220-074404269.jpg",
-            "verified": false,
-            "desc": ""
-          },
-          {
-            "name": "lujo",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/TB5m2DN1/Foto-Grid-20260306-220126113.jpg",
-            "verified": true,
-            "desc": ""
-          },
-          {
-            "id": 1773628955084,
-            "name": "FASHIONIST",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/cnRdKL7/IMG-20260315-WA0082.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773680558970,
-            "name": "multiventas",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/DfpTxY1H/IMG-20260316-WA0003.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773680596803,
-            "name": "multiofertas",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/B75Y6yj/IMG-20260316-WA0010.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773680829026,
-            "name": "cityjeans",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/N64hDtPf/IMG-20260316-WA0002.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773681209941,
-            "name": "tiva estampados sublimaciones",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/RG0wZ6Qd/Foto-Grid-20260315-183430711.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "MAYORISTAS DE BIYUTERIE": {
-        "img": "https://i.ibb.co/KpvtzLSw/mi-4-03-2026-07-47-10.png",
-        "shops": [
-          {
-            "id": 1773397572015,
-            "name": "biscuit",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/TDK7fGTQ/Foto-Grid-20260313-071451759.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773494078687,
-            "name": "MODALUX",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/Xk3Fy0fb/IMG-20260314-WA0019.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773494210965,
-            "name": "nube",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/KcNwM7sz/IMG-20260314-WA0018.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773599497197,
-            "name": "el primo",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/bgrYnq8b/IMG-20260313-WA0099.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773599606803,
-            "name": "rising",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/0pr4Fq9t/IMG-20260313-WA0101.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773599703857,
-            "name": "mv",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/8L3sRKnk/IMG-20260314-WA0011.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773599794346,
-            "name": "bejoye",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/3yVdHrjk/IMG-20260314-WA0008.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773600526479,
-            "name": "emy",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/M5CZCk8M/IMG-20260314-WA0014.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773600694865,
-            "name": "venus",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/dsGmHfDy/IMG-20260314-WA0003.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773657899256,
-            "name": "victoria",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/2YqPXC1B/IMG-20260316-WA0005.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773657932933,
-            "name": "gilda",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/FT518Tv/IMG-20260316-WA0011.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773657977614,
-            "name": "mariachi",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/ZzBK5vvc/IMG-20260316-WA0004.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773658189903,
-            "name": "abimodas",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/3mwjVWSg/IMG-20260316-WA0000.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "MAYORISTAS FERRETEROS": {
-        "img": "https://i.ibb.co/hFmcTGB6/mi-4-03-2026-07-56-27.png",
-        "shops": [
-          {
-            "id": 412244661480,
-            "name": "MULTISERVIX",
-            "dir": "Dorrego35 chivilcoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/TxGvgFVd/Foto-Grid-20260305-090651796.jpg",
-            "verified": true,
-            "desc": "REPARACIONES gas luz jardinería techista filtraciones plomería herrería construcción\nTerminaciones planos aire refrigeración etc"
-          },
-          {
-            "id": 414865465440,
-            "name": "HERRERIA",
-            "dir": "Dorrego35multiservix",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/LdqPDmyb/Foto-Grid-20260305-083820221.jpg",
-            "verified": true,
-            "desc": "Herrería a domicilio\nFabricación de máquinas culturismo"
-          },
-          {
-            "id": 4141122180,
-            "name": "Gas y plomeria",
-            "dir": "Dorrego35",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/LDTxjbk2/Foto-Grid-20260305-084010240.jpg",
-            "verified": true,
-            "desc": "Instaladores matriculados\nREPARACIONES gas y plomeria"
-          },
-          {
-            "id": 432322331480,
-            "name": "PINTURA EN. ALTURA",
-            "dir": "Dorrego35chivilcoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/2YdCfm8K/Foto-Grid-20260305-084356031.jpg",
-            "verified": true,
-            "desc": "Pintura domicliarias altura frente de locales"
-          }
-        ]
-      },
-      "Mayoristas de SANTERIA": {
-        "img": "https://i.ibb.co/XkVPRF83/mi-4-03-2026-07-51-59.png",
-        "shops": [
-          {
-            "id": 1772988392566,
-            "name": "la botica milagrosa",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/qS2BfPy/Foto-Grid-20260306-215935548.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773497920758,
-            "name": "aromistic",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/B209SJVL/IMG-20260314-WA0015.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773513977476,
-            "name": "el rey del saumerio",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/27wKJ2ZX/IMG-20260314-WA0001.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773600972104,
-            "name": "del sol",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/99BsKgsw/IMG-20260314-WA0010.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773601468071,
-            "name": "3b",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/4RQWdvHj/IMG-20260314-WA0009.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773601656306,
-            "name": "dragon",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/tM1ZSXPq/IMG-20260314-WA0006.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "Mayoristas art DEPORTIVOS": {
-        "img": "https://i.ibb.co/FLzr6ks9/mi-4-03-2026-13-45-07.png",
         "shops": []
-      },
-      "Mayoristas MASCOTAS": {
-        "img": "https://i.ibb.co/CKvwX6Q6/mi-4-03-2026-13-26-31.png",
-        "shops": []
-      },
-      "MAYORISTAS TECNICOS CELULARES REPUESTOS": {
-        "img": "https://i.ibb.co/QvvX6dCZ/Foto-Grid-20260304-101735275.jpg",
+      }
+    },
+    "cover": "https://i.ibb.co/jXRLnnN/Foto-Grid-20260228-065934668.jpg"
+  },
+  "jdaskweqkew": {
+    "cover": "https://i.ibb.co/JWCpDdWM/Cornalitos2.png",
+    "subcategories": {
+      "jkdfskdskdsakjdsf": {
+        "img": "https://i.ibb.co/zW6SVKwT/etiqueta-v1-RGB-1-pages-to-jpg-0006.jpg",
         "shops": [
           {
-            "id": 414855465646540,
-            "name": "MULTISERVIX",
-            "dir": "Dorrego35chivilcoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/tTfg7QSt/Foto-Grid-20260305-134301038.jpg",
-            "verified": true,
-            "desc": "Mantenimiento de pag web \nVentas on linea\nMercado libre publicaciones"
-          },
-          {
-            "id": 411321480,
-            "name": "Anunciosbweb",
-            "dir": "Bolivar 383chivilcoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/5gxT0gJw/lun-16-02-2026-05-48-42.png",
-            "verified": true,
-            "desc": "Creación pág web\nMarketing digital\nPublicidad. En redes"
-          },
-          {
-            "id": 41432443232480,
-            "name": "Publiweb",
-            "dir": "Bolivar 383chivilcoy",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/bMWmcqXk/Foto-Grid-20260220-071911863.jpg",
-            "verified": true,
-            "desc": "Creación pág web\nPublicidad en redes \nMarketing digital"
-          },
-          {
-            "id": 4141133180,
-            "name": "MITO",
-            "dir": "Bolivar 383",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/Kjj4GfZ2/Foto-Grid-20260305-153913796.jpg",
-            "verified": true,
-            "desc": "Creación pág web"
-          },
-          {
-            "id": 4148012332112,
-            "name": "Iadigital",
-            "dir": "Bolivar 383",
-            "tel": "2346462346",
-            "img": "https://i.ibb.co/ym9dBrMx/Foto-Grid-20260305-153806274.jpg",
-            "verified": true,
-            "desc": "Creación pág web"
-          },
-          {
-            "id": 1773428582048,
-            "name": "PLANETA",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/BV9DWQbq/1773428408916.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773431272668,
-            "name": "cellzone",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/yn9330WP/IMG-20260313-WA0104.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773431384164,
-            "name": "eleventech",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/9HqpXhBd/IMG-20260313-WA0105.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773431486093,
-            "name": "mc",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/3yM0Q4L9/IMG-20260313-WA0101.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773514313615,
-            "name": "nickycell",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/1GRF3Qg3/IMG-20260314-WA0000.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "MAYORISTAS VICERAS": {
-        "img": "https://i.ibb.co/rKbbM1Z6/Foto-Grid-20260304-101352724.jpg",
-        "shops": []
-      },
-      "MAYORISTAS GASTRONOMICOS": {
-        "img": "https://i.ibb.co/wh4ckyYj/Foto-Grid-20260304-140221624.jpg",
-        "shops": []
-      },
-      "MAYORISTAS DE TELAS": {
-        "img": "https://i.ibb.co/hRpPmvFt/mi-4-03-2026-07-39-50.png",
-        "shops": [
-          {
-            "id": 1773402559885,
-            "name": "gabytex",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/c08VqLQ/1773395550423.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773402635229,
-            "name": "almashow",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/20Q6JnfF/IMG-20260313-WA0054.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773430256450,
-            "name": "rinatex",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/hxRb7hb0/IMG-20260313-WA0100.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773430994774,
-            "name": "ofertelas",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/mKWvd51/IMG-20260313-WA0102.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773431174929,
-            "name": "victoria",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/Q7KqZ3fr/IMG-20260313-WA0103.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773628849887,
-            "name": "victor",
-            "dir": "Patrur131",
-            "tel": "1150842214",
-            "img": "https://i.ibb.co/rGXkSJW4/Foto-Grid-20260315-184119267.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773657755050,
-            "name": "god darling",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/dwdJ8yym/IMG-20260315-WA0071.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "MAYORISTAS MERCERIAS HILOS": {
-        "img": "https://i.ibb.co/mVtYkZ9g/mi-4-03-2026-13-34-43.png",
-        "shops": [
-          {
-            "id": 1773742441663,
-            "name": "paso",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/99FtbQhR/IMG-20260316-WA0061.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "Fabricantes bolsas prolipopilenos y descartables": {
-        "img": "https://i.ibb.co/sJ9jWTWr/mi-4-03-2026-08-07-34.png",
-        "shops": [
-          {
-            "id": 1772988718798,
-            "name": "geopel",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/rfZNmstB/Foto-Grid-20260306-224625412.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773400907977,
-            "name": "muresco",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/chXcPPn0/IMG-20260313-WA0046.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773689507705,
-            "name": "w",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/0RH9XwY2/IMG-20260316-WA0065.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "MAYORISTAS COTILLON fabricantes disfraces": {
-        "img": "https://i.ibb.co/ZpDmxXnh/mi-4-03-2 de026-07-33-28.png",
-        "shops": [
-          {
-            "id": 1773655503279,
-            "name": "chiqui",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/7Nprf3f0/IMG-20260316-WA0013.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773655577232,
-            "name": "la yunsa",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/6RsCntSP/IMG-20260316-WA0001.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773655623996,
-            "name": "catalina",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/Zp93hCQh/IMG-20260316-WA0006.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773655683114,
-            "name": "mágica lavalle",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/VpNt93rp/IMG-20260316-WA0007.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773655732909,
-            "name": "diaz",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/9kk7QZBR/IMG-20260316-WA0009.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "MAYORISTAS TALLER DE CALZADO Y CUEROS": {
-        "img": "https://i.ibb.co/twrpzkwX/mi-4-03-2026-14-40-38.png",
-        "shops": []
-      },
-      "MAYORISTAS DE Bisutería Y PIERCING TATOO": {
-        "img": "https://i.ibb.co/KpvtzLSw/mi-4-03-2026-07-47-10.png",
-        "shops": [
-          {
-            "id": 1772992698682,
-            "name": "sheila",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/ks4mHvKV/Foto-Grid-20260306-223401394.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773497617685,
-            "name": "lady linda",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/sv4xyXj8/IMG-20260314-WA0017.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773497868973,
-            "name": "mik",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/BHFCYp6s/IMG-20260314-WA0014.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773498164381,
-            "name": "valeriana",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/QvnjKsbk/IMG-20260314-WA0012.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773498192472,
-            "name": "abigail",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/PXkSRwP/IMG-20260314-WA0013.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773600077847,
-            "name": "jazmin",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/p6qckkK6/IMG-20260314-WA0007.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773600205665,
-            "name": "inti",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/CpkzY9yx/IMG-20260314-WA0005.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773741480192,
-            "name": "linda",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/1tkDSqGK/IMG-20260316-WA0063.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773741608473,
-            "name": "bling",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/VpJYdDk6/IMG-20260316-WA0067.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773741696071,
-            "name": "unica",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/7xphtKVJ/IMG-20260316-WA0069.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "MAYORISTAS EN ART TOCADOR Y PERFUMERIA": {
-        "img": "https://i.ibb.co/ksmP7H4M/Foto-Grid-20260304-173217477.jpg",
-        "shops": [
-          {
-            "id": 1773430618995,
-            "name": "RISING",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/ZRkZwqVs/IMG-20260313-WA0101.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773512405579,
-            "name": "aromistic",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/7twg1KJM/IMG-20260314-WA0015.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773742143194,
-            "name": "violeta",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/PzgFqW87/IMG-20260316-WA0068.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773742240330,
-            "name": "labisol blow",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/9HLgCyKG/IMG-20260316-WA0060.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773742311569,
-            "name": "linda",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/1tkDSqGK/IMG-20260316-WA0063.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773742364199,
-            "name": "m",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/LzpNnHc7/IMG-20260316-WA0062.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773742411925,
-            "name": "glowia",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/7J5JjVrN/IMG-20260316-WA0066.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773742515964,
-            "name": "martin",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/TqL5HFxD/IMG-20260316-WA0064.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "MAYORISTAS EN PERFUMERIA Y ART TOCADOR": {
-        "img": "https://i.ibb.co/ksmP7H4M/Foto-Grid-20260304-173217477.jpg",
-        "shops": [
-          {
-            "id": 1773512215769,
-            "name": "royesi",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/355KBV0m/IMG-20260314-WA0008.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773512335246,
-            "name": "jazmin",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/HTtF2L5M/IMG-20260314-WA0007.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773513873907,
-            "name": "modapoint",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/ycbmRQsP/IMG-20260314-WA0002.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773658082890,
-            "name": "star",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/KpBKbVvC/IMG-20260315-WA0091.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "MAYORISTAS DE CAMARAS CUBIERTAS Y ACC BICICLETAS": {
-        "img": "https://i.ibb.co/Jjt1f7Vw/jue-5-03-2026-13-19-47.png",
-        "shops": [
-          {
-            "id": 1773629647958,
-            "name": "sanchyn",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/5zHfgsP/Foto-Grid-20260315-182735220.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "MARROQUINERIA": {
-        "img": "https://i.ibb.co/9HxcS1QB/Foto-Grid-20260307-110042323.jpg",
-        "shops": [
-          {
-            "id": 1772990080679,
-            "name": "los trigales",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/7JyTJ2cZ/Foto-Grid-20260306-224209920.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773428824027,
-            "name": "FRATELLO",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/d0x8ywWv/IMG-20260313-WA0096.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773428975961,
-            "name": "REGIONALES ARGENTINOS",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/cXpYJmRH/IMG-20260313-WA0097.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773429317491,
-            "name": "caps",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/MxpSrqg6/IMG-20260313-WA0099.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773598865577,
-            "name": "el primo",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/bgrYnq8b/IMG-20260313-WA0099.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773598960150,
-            "name": "biloye",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/3yVdHrjk/IMG-20260314-WA0008.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773599055628,
-            "name": "rising",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/0pr4Fq9t/IMG-20260313-WA0101.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773599187557,
-            "name": "rg",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/QFtNkY0z/IMG-20260313-WA0056.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773599411550,
-            "name": "moda point",
-            "dir": "",
-            "tel": "",
-            "img": "",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773600372462,
-            "name": "iumaio",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/sr3McFP/IMG-20260314-WA0004.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773658702772,
-            "name": "good darling",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/dwdJ8yym/IMG-20260315-WA0071.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "empresas de transportes del interior. a once": {
-        "img": "https://i.ibb.co/GQzjw4W0/s-b-7-03-2026-11-12-02.png",
-        "shops": [
-          {
-            "name": "EN COPAS11TRANSPORTES",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/JFMNgmYn/Foto-Grid-20260306-220830237.jpg",
-            "verified": true,
-            "desc": ""
-          },
-          {
-            "name": "kv",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/Qvm5k4rZ/Foto-Grid-20260306-220653320.jpg",
+            "name": "enrique",
+            "dir": "32443",
+            "tel": "32324",
+            "img": "https://i.ibb.co/JWCpDdWM/Cornalitos2.png",
             "verified": false,
-            "desc": ""
-          },
-          {
-            "id": 1772992817376,
-            "name": "HISPAMERICA",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/fzWstmTK/Foto-Grid-20260306-222554291.jpg",
             "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1772993446124,
-            "name": "BALDERRAMA",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/hRn5fKLH/Foto-Grid-20260306-222049344.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1772993596052,
-            "name": "senderos del norte",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/gFFhXytP/Foto-Grid-20260306-221917842.jpg",
-            "desc": "",
-            "verified": false
-          }
-        ]
-      },
-      "MAYORISTAS DISTRIBUIDORES DE BLANQUERIA": {
-        "img": "https://i.ibb.co/60ZXnRQD/dom-8-03-2026-13-58-24.png",
-        "shops": [
-          {
-            "id": 1772989564855,
-            "name": "MB",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/Kpdnw7k1/Foto-Grid-20260306-214929253.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1773658853618,
-            "name": "la esperanza",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/prLQyYgN/IMG-20260316-WA0014.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "mayoristas en electrónica y. audio": {
-        "img": "https://i.ibb.co/hJcWjYNP/d⁷om-8-03-2026-14-30-50.png",
-        "shops": [
-          {
-            "id": 1772991644308,
-            "name": "transistores MP",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/vFh4WsC/Foto-Grid-20260306-222237116.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1772992086258,
-            "name": "maxes.insumos",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/FLBhKryH/Foto-Grid-20260306-224043173.jpg",
-            "desc": "",
-            "verified": false
-          },
-          {
-            "id": 1772993244301,
-            "name": "mayorista en control remoto",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/yBVv3VTg/Foto-Grid-20260306-223545814.jpg",
-            "desc": "",
-            "verified": false
-          }
-        ]
-      },
-      "fabricantes de fibrofacil": {
-        "img": "https://i.ibb.co/yFzw0rzJ/Foto-Grid-20260313-071258660.jpg",
-        "shops": []
-      },
-      "lencería importadores": {
-        "img": "https://i.ibb.co/xKG8Wtnt/dom-15-03-2026-16-20-47.png",
-        "shops": [
-          {
-            "id": 1773627501369,
-            "name": "victoria",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/M5ZsCG2p/IMG-20260315-WA0094.jpg",
-            "desc": "",
-            "verified": true
-          },
-          {
-            "id": 1773627556614,
-            "name": "katy",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/d48ZNmGP/IMG-20260315-WA0097.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "MAYORISTAS CANNABIS ACCESORIOS": {
-        "img": "",
-        "shops": [
-          {
-            "id": 1773628817654,
-            "name": "grow",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/RT1PT5bd/Foto-Grid-20260315-183112212.jpg",
-            "desc": "",
-            "verified": true
-          }
-        ]
-      },
-      "mayoristas importadores acc cannabis": {
-        "img": "https://i.ibb.co/Q3JQ4X8d/dom-15-03-2026-16-16-31.png",
-        "shops": [
-          {
-            "id": 1773628993135,
-            "name": "groe",
-            "dir": "",
-            "tel": "",
-            "img": "https://i.ibb.co/RT1PT5bd/Foto-Grid-20260315-183112212.jpg",
-            "desc": "",
-            "verified": true
+            "social": {
+              "instagram": "https://www.instagram.com/petlinary?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            }
           }
         ]
       }
-    },
-    "cover": "https://i.ibb.co/HD8Gqphq/Foto-Grid-20260303-154850779.jpg"
-  },
-  "multiservix": {
-    "cover": "https://i.ibb.co/TxGvgFVd/Foto-Grid-20260305-090651796.jpg",
-    "subcategories": {}
-  },
-  "control remoto": {
-    "cover": "",
-    "subcategories": {}
+    }
   }
 }
